@@ -53,16 +53,18 @@ module.exports = function (grunt) {
     , watch:
       { browserify:
         { files: '<%= project.src %>/{,*/}*.js'
-        , tasks: ['jshint', 'browserify']
-      }
+        , tasks: ['browserify']
+        }
       }
 
     , browserify:
       { build:
         { src: ['<%= project.src %>/game/app.js']
         , dest: '<%= project.dest %>'
+        , options:
+          { bundleOptions: { debug: true }
+          }
         }
-      , bundleOptions: { debug: true }
       }
 
     , uglify:
