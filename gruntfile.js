@@ -1,40 +1,112 @@
 module.exports = function (grunt) {
 
+  grunt.loadNpmTasks('grunt-browserify')
+  grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-contrib-connect')
+  grunt.loadNpmTasks('grunt-contrib-jshint')
+  grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-open')
+
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
+
+    , project:
+      { src: 'public/js/src/'
+      , dest: 'public/js/build/bundle.js'
+      , port: 3017
+      , js: '<%= project.src %>/game/{,*/}*.js'
+      , phaser: '<%= project.src %>/lib/phaser.arcade.js'
+      }
+
+    , tag:
+      { banner:
+        '/*!\n' +
+        ' * <%= pkg.title %>\n' +
+        ' * <%= pkg.description %>\n' +
+        ' * <%= pkg.url %>\n' +
+        ' * @author <%= pkg.author %>\n' +
+        ' * @version <%= pkg.version %>\n' +
+        ' * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n' +
+        ' * Made using Phaser JS Boilerplate <https://github.com/luizbills/phaser-js-boilerplate/>' +
+        ' */\n'
+      }
+
     , connect:
       { server:
         { options:
-          { port: 8080
-          , base: './build'
+          { port: '<%= project.port %>'
+          , base: './public'
           }
         }
       }
-    , concat:
-      { dist:
-        { src:
-          [ 'src/lib/**/*.js'
-          , 'src/game/**/*.js'
-          ]
-        , dest: 'build/js/<%= pkg.name %>.js'
+
+    , jshint:
+      { files:
+        [ 'gruntfile.js'
+        , '<%= project.js %>'
+        ]
+      , options:
+        { jshintrc: '.jshintrc'
         }
       }
+
     , watch:
-      { files: 'src/**/*.js'
-      , tasks: ['concat']
+      { browserify:
+        { files: '<%= project.src %>/js/{,*/}*.js'
+        , tasks: ['jshint', 'browserify']
+        }
       }
+
+    , browserify:
+      { build:
+        { src: ['<%= project.src %>/game/app.js']
+        , dest: '<%= project.dest %>'
+        , options:
+          { alias:
+            [ '<%= project.phaser %>:Phaser'
+            ]
+          , shim:
+            { 'Phaser':
+              { path: '<%= project.phaser %>'
+              , exports: null
+              }
+            }
+          }
+        }
+      }
+
+    , uglify:
+      { options:
+        { banner: '<%= tag.banner %>'
+        }
+      , dist:
+        { files:
+          { '<%= project.dest %>': '<%= project.dest %>'
+          }
+        }
+      }
+
     , open:
       { dev:
-        { path: 'http://localhost:8080/index.html'
+        { path: 'http://localhost:<%= project.port %>/index.html'
         }
       }
     }
   )
 
-  grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-contrib-connect')
-  grunt.loadNpmTasks('grunt-open')
-  grunt.loadNpmTasks('grunt-contrib-concat')
+  grunt.registerTask('default',
+    [ 'jshint'
+    , 'browserify'
+    , 'connect'
+    , 'open'
+    , 'watch'
+    ]
+  )
 
-  grunt.registerTask('default', ['concat', 'connect', 'open', 'watch'])
+  grunt.registerTask('build',
+    [ 'jshint'
+    , 'browserify'
+    , 'uglify'
+    ]
+  )
 }

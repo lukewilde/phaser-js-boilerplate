@@ -9,7 +9,6 @@
   "maxcomplexity": 6,
   "eqeqeq": true,
   "eqnull": true,
-  "es5": true,
   "evil": false,
   "immed": false,
   "jquery": true,
@@ -39,7 +38,8 @@
     "Munchkin",
     "mktoMunchkinFunction",
     "_",
-    "emit"
+    "emit",
+    "Phaser"
   ],
   "quotmark": "single",
   "smarttabs": true,
