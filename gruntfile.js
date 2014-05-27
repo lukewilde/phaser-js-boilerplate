@@ -63,6 +63,7 @@ module.exports = function (grunt) {
         , dest: '<%= project.dest %>'
         , options:
           { bundleOptions: { debug: true }
+          , external: ['phaser']
           }
         }
       }
