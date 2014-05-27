@@ -41,4 +41,4 @@ Icon?
 # ZSH Cake plugin cache
 /.cake_task_cache
 
-/public/js/bundle.js
+/public/js/build/*.js

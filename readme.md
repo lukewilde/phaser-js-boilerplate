@@ -6,9 +6,15 @@
 * Cache busted / Versionated assets
 * Source maps!
 * JsHint
+* Lodash
 * Uglify.js
 
 ## How
 
-## Who
+    git clone git@github.com:lukewilde/phaser-blank.git
+    cd phaser-blank
+    git remote rename origin blank
+    npm install
+    grunt
 
+## Who

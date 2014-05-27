@@ -37,9 +37,7 @@
     "unescape",
     "Munchkin",
     "mktoMunchkinFunction",
-    "_",
-    "emit",
-    "Phaser"
+    "emit"
   ],
   "quotmark": "single",
   "smarttabs": true,

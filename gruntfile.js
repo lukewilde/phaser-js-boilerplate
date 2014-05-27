@@ -1,3 +1,5 @@
+var shims = Object.keys(require('./shims'))
+
 module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-browserify')
@@ -5,16 +7,16 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect')
   grunt.loadNpmTasks('grunt-contrib-jshint')
   grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-contrib-concat')
 
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
 
     , project:
-      { src: 'public/js/src/'
-      , dest: 'public/js/bundle.js'
+      { src: 'public/js/src'
+      , dest: 'public/js/build'
       , port: 3017
       , js: '<%= project.src %>/game/{,*/}*.js'
-      , lib: '<%= project.src %>/lib/'
       , phaser: '<%= project.lib %>/phaser.arcade.js'
       }
 
@@ -53,18 +55,41 @@ module.exports = function (grunt) {
     , watch:
       { browserify:
         { files: '<%= project.src %>/{,*/}*.js'
-        , tasks: ['browserify']
+        , tasks: ['browserify:app', 'concat']
         }
       }
 
     , browserify:
-      { build:
-        { src: ['<%= project.src %>/game/app.js']
-        , dest: '<%= project.dest %>'
+      { libs:
+        { src: []
+        , dest: '<%= project.dest %>/libs.js'
         , options:
-          { bundleOptions: { debug: true }
-          , external: ['phaser']
+          { transform: ['browserify-shim']
+          , require: shims
+          , bundleOptions:
+            { debug: true
+            }
           }
+        }
+      , app:
+        { src: ['<%= project.src %>/game/app.js']
+        , dest: '<%= project.dest %>/app.js'
+        , options:
+          { bundleOptions:
+            { debug: true
+            }
+          , external: shims
+          }
+        }
+      }
+
+    , concat:
+      { options:
+        { separator: ';'
+        }
+      , dist:
+        { src: ['<%= project.dest %>/libs.js', '<%= project.dest %>/app.js']
+        , dest: '<%= project.dest %>/bundle.js'
         }
       }
 
@@ -82,7 +107,9 @@ module.exports = function (grunt) {
   )
 
   grunt.registerTask('default',
-    [ 'browserify'
+    [ 'browserify:libs'
+    , 'browserify:app'
+    , 'concat'
     , 'connect'
     , 'watch'
     ]
@@ -90,7 +117,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build',
     [ 'jshint'
-    , 'browserify'
+    , 'browserify:libs'
+    , 'browserify:app'
+    , 'concat'
     , 'uglify'
     ]
   )

@@ -1,6 +1,5 @@
-require('phaser')
-
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create })
+var Phaser = require('Phaser')
+  , game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create })
 
 function preload () {
   game.load.image('logo', 'images/phaser.png')
