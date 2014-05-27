@@ -1,232 +1,20 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-require('Phaser')
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+require('phaser')
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game-container');
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create })
 
-game.state.add('Boot', require('./states/boot'));
-game.state.add('Splash', require('./states/splash'));
-game.state.add('Preloader', require('./states/preloader'));
-game.state.add('MainMenu', require('./states/main-menu'));
-game.state.add('Game', require('./states/game'));
+function preload () {
+  game.load.image('logo', 'images/phaser.png')
+}
 
-game.state.start('Boot');
+function create () {
+  var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo')
+  logo.anchor.setTo(0.5, 0.5)
+}
 
-},{"./states/boot":2,"./states/game":3,"./states/main-menu":4,"./states/preloader":5,"./states/splash":6,"Phaser":"tTJ/xw"}],2:[function(require,module,exports){
-var Boot = function () {};
-
-module.exports = Boot;
-
-Boot.prototype = {
-
-  preload: function () {
-    // Here we load the assets required for our preloader (in this case a background and a loading bar)
-    this.load.image('preloaderBackground', 'assets/img/preloader_background.jpg');
-    this.load.image('preloaderBar', 'assets/img/preloader_bar.png');
-    this.load.image('phaserLogo', 'assets/img/phaser-logo.png');
-  },
-
-  create: function () {
-    // Unless you specifically know your game needs to support multi-touch I would recommend setting this to 1
-    this.game.input.maxPointers = 1;
-
-    // Phaser will automatically pause if the browser tab the game is in loses focus. You can disable that here:
-    this.game.stage.disableVisibilityChange = true;
-
-    if (this.game.device.desktop) {
-      // If you have any desktop specific settings, they can go in here
-      this.game.stage.scale.pageAlignHorizontally = true;
-    } else {
-      // Same goes for mobile settings.
-      // In this case we're saying "scale the game, no lower than 480x260 and no higher than 1024x768"
-      this.game.stage.scaleMode = Phaser.StageScaleMode.SHOW_ALL;
-      this.game.stage.scale.minWidth = 480;
-      this.game.stage.scale.minHeight = 260;
-      this.game.stage.scale.maxWidth = 1024;
-      this.game.stage.scale.maxHeight = 768;
-      this.game.stage.scale.forceLandscape = true;
-      this.game.stage.scale.pageAlignHorizontally = true;
-      this.game.stage.scale.setScreenSize(true);
-    }
-
-    // By this point the preloader assets have loaded to the cache, we've set the game settings
-    // So now let's start the real preloader going
-    this.game.state.start('Splash');
-  }
-
-};
-
-},{}],3:[function(require,module,exports){
-var Game = function () {
-  // When a State is added to Phaser it automatically has the following properties set on it,
-  // even if they already exist:
-  /*
-  this.game;      // a reference to the currently running game
-  this.add;       // used to add sprites, text, groups, etc
-  this.camera;    // a reference to the game camera
-  this.cache;     // the game cache
-  this.input;     // the global input manager (you can access this.input.keyboard, this.input.mouse, as well from it)
-  this.load;      // for preloading assets
-  this.math;      // lots of useful common math operations
-  this.sound;     // the sound manager - add a sound, play one, set-up markers, etc
-  this.stage;     // the game stage
-  this.time;      // the clock
-  this.tweens;    // the tween manager
-  this.world;     // the game world
-  this.particles; // the particle manager
-  this.physics;   // the physics manager
-  this.rnd;       // the repeatable random number generator
-  */
-  // You can use any of these from any function within this State.
-  // But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
-};
-
-module.exports = Game;
-
-Game.prototype = {
-
-  create: function () {
-    //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-  },
-
-  update: function () {
-    //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-  },
-
-  quitGame: function () {
-    //  Here you should destroy anything you no longer need.
-    //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
-    //  Then let's go back to the main menu.
-    this.game.state.start('MainMenu');
-  }
-
-};
-
-},{}],4:[function(require,module,exports){
-var MainMenu = function () {
-  this.music = null;
-  this.playButton = null;
-};
-
-module.exports = MainMenu;
-
-MainMenu.prototype = {
-  create: function () {
-    //  We've already preloaded our assets, so let's kick right into the Main Menu itself.
-    //  Here all we're doing is playing some music and adding a picture and button
-    //  Naturally I expect you to do something significantly better :)
-
-    this.music = this.add.audio('titleMusic');
-    this.music.play();
-
-    this.add.sprite(0, 0, 'titlepage');
-
-    this.playButton = this.add.button(400, 600, 'playButton', this.startGame, this, 'buttonOver', 'buttonOut', 'buttonOver');
-  },
-
-  update: function () {
-    //  Do some nice funky main menu effect here
-  },
-
-  startGame: function () {
-    //  Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
-    this.music.stop();
-
-    //  And start the actual game
-    this.game.state.start('Game');
-  }
-
-};
-
-},{}],5:[function(require,module,exports){
-'use strict';
-
-var Preloader = function () {
-  this.background = null;
-  this.preloadBar = null;
-  this.ready = false;
-};
-
-module.exports = Preloader;
-
-Preloader.prototype = {
-
-  preload: function () {
-    // These are the assets we loaded in Boot.js
-    // A nice sparkly background and a loading progress bar
-    this.background = this.add.sprite(0, 0, 'preloaderBackground');
-    this.preloadBar = this.add.sprite(300, 400, 'preloaderBar');
-
-    //  This sets the preloadBar sprite as a loader sprite.
-    //  What that does is automatically crop the sprite from 0 to full-width
-    //  as the files below are loaded in.
-    this.load.setPreloadSprite(this.preloadBar);
-
-    //  Here we load the rest of the assets our game needs.
-    //  As this is just a Project Template I've not provided these assets, swap them for your own.
-    this.load.image('titlepage', 'assets/img/title.jpg');
-    this.load.atlas('playButton', 'assets/img/play_button.png', 'assets/img/play_button.json');
-    this.load.audio('titleMusic', ['assets/audio/main_menu.mp3']);
-    this.load.bitmapFont('caslon', 'assets/fonts/caslon.png', 'assets/fonts/caslon.xml');
-    //  + lots of other required assets here
-  },
-
-  create: function () {
-    //  Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes
-    this.preloadBar.cropEnabled = false;
-  },
-
-  update: function () {
-    //  You don't actually need to do this, but I find it gives a much smoother game experience.
-    //  Basically it will wait for our audio file to be decoded before proceeding to the MainMenu.
-    //  You can jump right into the menu if you want and still play the music, but you'll have a few
-    //  seconds of delay while the mp3 decodes - so if you need your music to be in-sync with your menu
-    //  it's best to wait for it to decode here first, then carry on.
-
-    //  If you don't have any music in your game then put the game.state.start line into the create function and delete
-    //  the update function completely.
-
-    if (this.cache.isSoundDecoded('titleMusic') && this.ready === false) {
-      this.ready = true;
-      this.game.state.start('MainMenu');
-    }
-  }
-
-};
-
-},{}],6:[function(require,module,exports){
-// TODO: add commentaries
-
-var Splash = function () {
-  this.logo = null;
-};
-
-module.exports = Splash;
-
-Splash.prototype = {
-
-  create: function () {
-    var midx = 800/2,
-      midy = 600/2,
-      logo, tween;
-
-    logo = this.logo = this.add.sprite(midx, midy, 'phaserLogo');
-    logo.anchor.x = logo.anchor.y = 0.5;
-
-    tween = this.add.tween(logo);
-
-    tween.onComplete.add(function() {
-      this.game.state.start('Preloader');
-    }, this);
-
-    tween
-      .to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None)
-      .start();
-  }
-
-};
-
-},{}],"tTJ/xw":[function(require,module,exports){
+},{"phaser":2}],2:[function(require,module,exports){
+(function (global){
+;__browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2014 Photon Storm Ltd.
@@ -56048,6 +55836,9 @@ Phaser.Tileset.prototype.constructor = Phaser.Tileset;
 * "Don't follow strange women who lure you into woods with beautiful poetry." - @djfood
 */
 
-},{}],"Phaser":[function(require,module,exports){
-module.exports=require('tTJ/xw');
+; browserify_shim__define__module__export__(typeof phaser != "undefined" ? phaser : window.phaser);
+
+}).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
+
+}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}]},{},[1])

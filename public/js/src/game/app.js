@@ -1,11 +1,12 @@
-require('Phaser')
+require('phaser')
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game-container');
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create })
 
-game.state.add('Boot', require('./states/boot'));
-game.state.add('Splash', require('./states/splash'));
-game.state.add('Preloader', require('./states/preloader'));
-game.state.add('MainMenu', require('./states/main-menu'));
-game.state.add('Game', require('./states/game'));
+function preload () {
+  game.load.image('logo', 'images/phaser.png')
+}
 
-game.state.start('Boot');
+function create () {
+  var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo')
+  logo.anchor.setTo(0.5, 0.5)
+}

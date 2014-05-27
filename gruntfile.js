@@ -5,17 +5,17 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect')
   grunt.loadNpmTasks('grunt-contrib-jshint')
   grunt.loadNpmTasks('grunt-contrib-uglify')
-  grunt.loadNpmTasks('grunt-open')
 
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
 
     , project:
       { src: 'public/js/src/'
-      , dest: 'public/js/build/bundle.js'
+      , dest: 'public/js/bundle.js'
       , port: 3017
       , js: '<%= project.src %>/game/{,*/}*.js'
-      , phaser: '<%= project.src %>/lib/phaser.arcade.js'
+      , lib: '<%= project.src %>/lib/'
+      , phaser: '<%= project.lib %>/phaser.arcade.js'
       }
 
     , tag:
@@ -52,27 +52,17 @@ module.exports = function (grunt) {
 
     , watch:
       { browserify:
-        { files: '<%= project.src %>/js/{,*/}*.js'
+        { files: '<%= project.src %>/{,*/}*.js'
         , tasks: ['jshint', 'browserify']
-        }
+      }
       }
 
     , browserify:
       { build:
         { src: ['<%= project.src %>/game/app.js']
         , dest: '<%= project.dest %>'
-        , options:
-          { alias:
-            [ '<%= project.phaser %>:Phaser'
-            ]
-          , shim:
-            { 'Phaser':
-              { path: '<%= project.phaser %>'
-              , exports: null
-              }
-            }
-          }
         }
+      , bundleOptions: { debug: true }
       }
 
     , uglify:
@@ -85,20 +75,12 @@ module.exports = function (grunt) {
           }
         }
       }
-
-    , open:
-      { dev:
-        { path: 'http://localhost:<%= project.port %>/index.html'
-        }
-      }
     }
   )
 
   grunt.registerTask('default',
-    [ 'jshint'
-    , 'browserify'
+    [ 'browserify'
     , 'connect'
-    , 'open'
     , 'watch'
     ]
   )
