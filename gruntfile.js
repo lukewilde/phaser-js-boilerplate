@@ -59,7 +59,7 @@ module.exports = function (grunt) {
 
     , watch:
       { options:
-        { livereload: productionBuild
+        { livereload: !productionBuild
         }
       , browserify:
         { files: '<%= project.src %>/{,*/}*.js'
