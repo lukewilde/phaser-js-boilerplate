@@ -23,7 +23,7 @@ module.exports = function (grunt) {
     , project:
       { src: 'public/js/src'
       , js: '<%= project.src %>/game/{,*/}*.js'
-      , dest: 'public/js/build'
+      , dest: 'public/js'
       , port: 3017
       , phaser: '<%= project.lib %>/phaser.arcade.js'
       , banner:
@@ -143,7 +143,7 @@ module.exports = function (grunt) {
         }
       }
 
-    , clean: ['<%= project.dest %>']
+    , clean: ['<%= project.dest %>/*.js']
 
     , imagemin:
       { compress:
