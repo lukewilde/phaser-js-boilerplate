@@ -8,6 +8,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint')
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-concat')
+  grunt.loadNpmTasks('grunt-cache-bust')
 
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
@@ -18,10 +19,7 @@ module.exports = function (grunt) {
       , port: 3017
       , js: '<%= project.src %>/game/{,*/}*.js'
       , phaser: '<%= project.lib %>/phaser.arcade.js'
-      }
-
-    , tag:
-      { banner:
+      , banner:
         '/*!\n' +
         ' * <%= pkg.title %>\n' +
         ' * <%= pkg.description %>\n' +
@@ -93,13 +91,33 @@ module.exports = function (grunt) {
         }
       }
 
+    , cacheBust:
+      { options:
+        { encoding: 'utf8'
+        , algorithm: 'md5'
+        , length: 8
+        }
+      , assets:
+        { files:
+          [
+            { src:
+              [ 'public/index.html'
+              , '<%= project.dest %>/app.html'
+              , '<%= project.dest %>/lib.html'
+              ]
+            }
+          ]
+        }
+      }
+
     , uglify:
       { options:
-        { banner: '<%= tag.banner %>'
+        { banner: '<%= project.banner %>'
         }
       , dist:
         { files:
-          { '<%= project.dest %>': '<%= project.dest %>'
+          { '<%= project.dest %>/app.js': '<%= project.dest %>/app.js'
+          , '<%= project.dest %>/lib.js': '<%= project.dest %>/lib.js'
           }
         }
       }
@@ -118,7 +136,7 @@ module.exports = function (grunt) {
     [ 'jshint'
     , 'browserify:libs'
     , 'browserify:app'
-    , 'concat'
+    , 'cacheBust'
     , 'uglify'
     ]
   )
