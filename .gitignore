@@ -42,3 +42,4 @@ Icon?
 /.cake_task_cache
 
 /public/js/build/*.js
+/public/*.html
