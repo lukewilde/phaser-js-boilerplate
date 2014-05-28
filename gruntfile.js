@@ -13,6 +13,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-open')
   grunt.loadNpmTasks('grunt-contrib-jade')
+  grunt.loadNpmTasks('grunt-contrib-imagemin')
 
   var productionBuild = !!(grunt.cli.tasks.length && grunt.cli.tasks[0] === 'build')
 
@@ -140,6 +141,17 @@ module.exports = function (grunt) {
 
     , clean: ['<%= project.dest %>']
 
+    , imagemin:
+      { compress:
+        { files:
+          [ { expand: true
+            , cwd: 'public/images/'
+            , src: ['**/*.{png,jpg,gif}']
+            }
+          ]
+        }
+      }
+
     , uglify:
       { options:
         { banner: '<%= project.banner %>'
@@ -179,4 +191,6 @@ module.exports = function (grunt) {
     , 'watch'
     ]
   )
+
+  grunt.registerTask('optimise', ['imagemin'])
 }
