@@ -63,7 +63,11 @@ module.exports = function (grunt) {
         }
       , browserify:
         { files: '<%= project.src %>/{,*/}*.js'
-        , tasks: ['browserify:app', 'concat']
+        , tasks: ['browserify:app']
+        }
+      , jade:
+        { files: 'templates/*.jade'
+        , tasks: ['jade']
         }
       }
 
@@ -168,7 +172,8 @@ module.exports = function (grunt) {
   )
 
   grunt.registerTask('default',
-    [ 'browserify:libs'
+    [ 'clean'
+    , 'browserify:libs'
     , 'browserify:app'
     , 'jade'
     , 'cacheBust'
