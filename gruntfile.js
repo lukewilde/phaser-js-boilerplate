@@ -14,6 +14,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-open')
   grunt.loadNpmTasks('grunt-contrib-jade')
 
+  var productionBuild = !!(grunt.cli.tasks.length && grunt.cli.tasks[0] === 'build')
+
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
 
@@ -56,7 +58,7 @@ module.exports = function (grunt) {
 
     , watch:
       { options:
-        { livereload: true
+        { livereload: productionBuild
         }
       , browserify:
         { files: '<%= project.src %>/{,*/}*.js'
@@ -72,7 +74,7 @@ module.exports = function (grunt) {
           { transform: ['browserify-shim']
           , require: shims
           , bundleOptions:
-            { debug: true
+            { debug: productionBuild
             }
           }
         }
@@ -81,7 +83,7 @@ module.exports = function (grunt) {
         , dest: '<%= project.dest %>/app.js'
         , options:
           { bundleOptions:
-            { debug: true
+            { debug: productionBuild
             }
           , external: shims
           }
@@ -116,7 +118,6 @@ module.exports = function (grunt) {
             { src:
               [ 'public/index.html'
               , '<%= project.dest %>/app.js'
-              , '<%= project.dest %>/lib.js'
               ]
             }
           ]
@@ -128,6 +129,7 @@ module.exports = function (grunt) {
         { options:
           { data:
             { properties: properties
+            , productionBuild: productionBuild
             }
           }
         , files:
@@ -156,6 +158,7 @@ module.exports = function (grunt) {
     [ 'browserify:libs'
     , 'browserify:app'
     , 'jade'
+    , 'cacheBust'
     , 'connect'
     , 'open'
     , 'watch'
@@ -168,8 +171,12 @@ module.exports = function (grunt) {
     , 'browserify:libs'
     , 'browserify:app'
     , 'jade'
-    , 'cacheBust'
     , 'uglify'
+    , 'concat'
+    , 'cacheBust'
+    , 'connect'
+    , 'open'
+    , 'watch'
     ]
   )
 }

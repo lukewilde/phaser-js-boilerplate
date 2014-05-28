@@ -8,10 +8,14 @@ head
 
     title=properties.title
 
-    script(src="js/build/lib.js")
-    script(src="js/build/app.js")
+    if (productionBuild)
+      script(src="js/build/bundle.js")
+    else
+      script(src="js/build/lib.js")
+      script(src="js/build/app.js")
 
   body
     #game
 
-    script(src="//localhost:35729/livereload.js")
+    if (!productionBuild)
+      script(src="//localhost:35729/livereload.js")
