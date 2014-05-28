@@ -1,5 +1,7 @@
 # Another Phaser.js Boilerplate
 
+https://github.com/photonstorm/phaser
+
 ## Why
 
 * Browserify

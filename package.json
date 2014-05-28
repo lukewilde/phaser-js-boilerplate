@@ -11,7 +11,7 @@
     "url": "git@github.com:lukewilde/phaser-blank.git"
   },
   "author": "Luke Wilde",
-  "license": "ISC",
+  "license": "MIT",
   "browser": {
     "Phaser": "./public/js/src/lib/phaser.arcade.js",
     "lodash": "./node_modules/lodash/dist/lodash.compat.js"
