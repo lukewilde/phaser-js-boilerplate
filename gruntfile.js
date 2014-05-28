@@ -1,4 +1,5 @@
 var shims = Object.keys(require('./shims'))
+  , properties = require('./public/js/src/game/properties.js')
 
 module.exports = function (grunt) {
 
@@ -11,6 +12,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-cache-bust')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-open')
+  grunt.loadNpmTasks('grunt-contrib-jade')
 
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
@@ -121,6 +123,19 @@ module.exports = function (grunt) {
         }
       }
 
+    , jade:
+      { compile:
+        { options:
+          { data:
+            { properties: properties
+            }
+          }
+        , files:
+          { 'public/index.html': ['templates/index.jade']
+          }
+        }
+      }
+
     , clean: ['<%= project.dest %>']
 
     , uglify:
@@ -140,6 +155,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default',
     [ 'browserify:libs'
     , 'browserify:app'
+    , 'jade'
     , 'connect'
     , 'open'
     , 'watch'
@@ -151,6 +167,7 @@ module.exports = function (grunt) {
     , 'clean'
     , 'browserify:libs'
     , 'browserify:app'
+    , 'jade'
     , 'cacheBust'
     , 'uglify'
     ]
