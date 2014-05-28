@@ -109,7 +109,6 @@ module.exports = function (grunt) {
   grunt.registerTask('default',
     [ 'browserify:libs'
     , 'browserify:app'
-    , 'concat'
     , 'connect'
     , 'watch'
     ]
