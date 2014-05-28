@@ -10,6 +10,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat')
   grunt.loadNpmTasks('grunt-cache-bust')
   grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-open')
 
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
@@ -82,6 +83,12 @@ module.exports = function (grunt) {
         }
       }
 
+    , open:
+      { server:
+        { path: 'http://localhost:<%= project.port %>'
+        }
+      }
+
     , concat:
       { options:
         { separator: ';'
@@ -131,6 +138,7 @@ module.exports = function (grunt) {
     [ 'browserify:libs'
     , 'browserify:app'
     , 'connect'
+    , 'open'
     , 'watch'
     ]
   )
