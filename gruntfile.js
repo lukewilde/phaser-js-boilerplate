@@ -9,15 +9,16 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-concat')
   grunt.loadNpmTasks('grunt-cache-bust')
+  grunt.loadNpmTasks('grunt-contrib-clean')
 
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
 
     , project:
       { src: 'public/js/src'
+      , js: '<%= project.src %>/game/{,*/}*.js'
       , dest: 'public/js/build'
       , port: 3017
-      , js: '<%= project.src %>/game/{,*/}*.js'
       , phaser: '<%= project.lib %>/phaser.arcade.js'
       , banner:
         '/*!\n' +
@@ -60,7 +61,7 @@ module.exports = function (grunt) {
     , browserify:
       { libs:
         { src: []
-        , dest: '<%= project.dest %>/libs.js'
+        , dest: '<%= project.dest %>/lib.js'
         , options:
           { transform: ['browserify-shim']
           , require: shims
@@ -86,7 +87,7 @@ module.exports = function (grunt) {
         { separator: ';'
         }
       , dist:
-        { src: ['<%= project.dest %>/libs.js', '<%= project.dest %>/app.js']
+        { src: ['<%= project.dest %>/lib.js', '<%= project.dest %>/app.js']
         , dest: '<%= project.dest %>/bundle.js'
         }
       }
@@ -102,13 +103,15 @@ module.exports = function (grunt) {
           [
             { src:
               [ 'public/index.html'
-              , '<%= project.dest %>/app.html'
-              , '<%= project.dest %>/lib.html'
+              , '<%= project.dest %>/app.js'
+              , '<%= project.dest %>/lib.js'
               ]
             }
           ]
         }
       }
+
+    , clean: ['<%= project.dest %>']
 
     , uglify:
       { options:
@@ -134,6 +137,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build',
     [ 'jshint'
+    , 'clean'
     , 'browserify:libs'
     , 'browserify:app'
     , 'cacheBust'
