@@ -1,4 +1,4 @@
-# Another Phaser.js Poilerplate
+# Another Phaser.js Boilerplate
 
 ## Why
 
