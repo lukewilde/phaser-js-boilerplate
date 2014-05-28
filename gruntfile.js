@@ -53,7 +53,10 @@ module.exports = function (grunt) {
       }
 
     , watch:
-      { browserify:
+      { options:
+        { livereload: true
+        }
+      , browserify:
         { files: '<%= project.src %>/{,*/}*.js'
         , tasks: ['browserify:app', 'concat']
         }
