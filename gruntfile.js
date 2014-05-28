@@ -14,6 +14,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-open')
   grunt.loadNpmTasks('grunt-contrib-jade')
   grunt.loadNpmTasks('grunt-contrib-imagemin')
+  grunt.loadNpmTasks('grunt-contrib-stylus')
 
   var productionBuild = !!(grunt.cli.tasks.length && grunt.cli.tasks[0] === 'build')
 
@@ -68,6 +69,10 @@ module.exports = function (grunt) {
       , jade:
         { files: 'templates/*.jade'
         , tasks: ['jade']
+        }
+      , stylus:
+        { files: 'public/css/*.styl'
+        , tasks: ['stylus']
         }
       }
 
@@ -143,6 +148,16 @@ module.exports = function (grunt) {
         }
       }
 
+    , stylus:
+      { compile:
+        { files:
+          { 'public/css/game.css': ['public/css/*.styl'] }
+        , options:
+          { sourcemaps: !productionBuild
+          }
+        }
+      }
+
     , clean: ['<%= project.dest %>/*.js']
 
     , imagemin:
@@ -176,6 +191,7 @@ module.exports = function (grunt) {
     , 'browserify:libs'
     , 'browserify:app'
     , 'jade'
+    , 'stylus'
     , 'cacheBust'
     , 'connect'
     , 'open'
@@ -189,6 +205,7 @@ module.exports = function (grunt) {
     , 'browserify:libs'
     , 'browserify:app'
     , 'jade'
+    , 'stylus'
     , 'uglify'
     , 'concat'
     , 'cacheBust'
