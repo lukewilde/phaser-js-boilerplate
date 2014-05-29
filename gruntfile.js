@@ -84,7 +84,7 @@ module.exports = function (grunt) {
           { transform: ['browserify-shim']
           , require: shims
           , bundleOptions:
-            { debug: productionBuild
+            { debug: !productionBuild
             }
           }
         }
@@ -93,7 +93,7 @@ module.exports = function (grunt) {
         , dest: '<%= project.dest %>/app.js'
         , options:
           { bundleOptions:
-            { debug: productionBuild
+            { debug: !productionBuild
             }
           , external: shims
           }
