@@ -5,9 +5,9 @@ https://github.com/photonstorm/phaser
 ## Why
 
 * Browserify
-* Source maps!
+* Source maps
 * JsHint
-* Cache busted / versionated assets
+* Cache busted assets
 * Image optimisation tools
 * Lodash
 * Uglify.js
@@ -23,4 +23,16 @@ https://github.com/photonstorm/phaser
     npm install
     grunt
 
+### Available targets
+
+#### grunt default
+
+Configures and runs a development build optimised for fast watch performance.
+
+#### grunt build
+
+Creates a production ready build of the application.
+
 ## Who
+
+  Built with some ideas from the retired https://github.com/luizbills/phaser-js-boilerplate
