@@ -16,7 +16,10 @@
     "Phaser": "./public/js/src/lib/phaser.arcade.js",
     "lodash": "./node_modules/lodash/dist/lodash.compat.js"
   },
-  "browserify-shim": "./shims.js",
+  "browserify-shim": {
+    "Phaser": { "exports": "Phaser" },
+    "lodash": { "exports": "_" }
+  },
   "devDependencies": {
     "browserify": "^4.1.5",
     "browserify-shim": "^3.5.0",
