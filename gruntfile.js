@@ -1,5 +1,4 @@
-var shims = Object.keys(require('./shims'))
-  , properties = require('./public/js/src/game/properties.js')
+var properties = require('./public/js/src/game/properties.js')
 
 module.exports = function (grunt) {
 
@@ -8,7 +7,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect')
   grunt.loadNpmTasks('grunt-contrib-jshint')
   grunt.loadNpmTasks('grunt-contrib-uglify')
-  grunt.loadNpmTasks('grunt-contrib-concat')
   grunt.loadNpmTasks('grunt-cache-bust')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-open')
@@ -62,9 +60,9 @@ module.exports = function (grunt) {
       { options:
         { livereload: !productionBuild
         }
-      , browserify:
-        { files: '<%= project.src %>/{,*/}*.js'
-        , tasks: ['browserify:app']
+      , js:
+        { files: '<%= project.dest %>/**/*.js'
+        , tasks: []
         }
       , jade:
         { files: 'templates/*.jade'
@@ -77,25 +75,15 @@ module.exports = function (grunt) {
       }
 
     , browserify:
-      { libs:
-        { src: []
-        , dest: '<%= project.dest %>/lib.js'
-        , options:
-          { transform: ['browserify-shim']
-          , require: shims
-          , bundleOptions:
-            { debug: !productionBuild
-            }
-          }
-        }
-      , app:
+      { app:
         { src: ['<%= project.src %>/game/app.js']
         , dest: '<%= project.dest %>/app.js'
         , options:
-          { bundleOptions:
+          { transform: ['browserify-shim']
+          , watch: true
+          , bundleOptions:
             { debug: !productionBuild
             }
-          , external: shims
           }
         }
       }
@@ -103,16 +91,6 @@ module.exports = function (grunt) {
     , open:
       { server:
         { path: 'http://localhost:<%= project.port %>'
-        }
-      }
-
-    , concat:
-      { options:
-        { separator: ';'
-        }
-      , dist:
-        { src: ['<%= project.dest %>/lib.js', '<%= project.dest %>/app.js']
-        , dest: '<%= project.dest %>/bundle.js'
         }
       }
 
@@ -188,8 +166,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default',
     [ 'clean'
-    , 'browserify:libs'
-    , 'browserify:app'
+    , 'browserify'
     , 'jade'
     , 'stylus'
     , 'cacheBust'
@@ -202,12 +179,10 @@ module.exports = function (grunt) {
   grunt.registerTask('build',
     [ 'jshint'
     , 'clean'
-    , 'browserify:libs'
-    , 'browserify:app'
+    , 'browserify'
     , 'jade'
     , 'stylus'
     , 'uglify'
-    , 'concat'
     , 'cacheBust'
     , 'connect'
     , 'open'
