@@ -17,8 +17,12 @@
     "lodash": "./node_modules/lodash/dist/lodash.compat.js"
   },
   "browserify-shim": {
-    "Phaser": { "exports": "Phaser" },
-    "lodash": { "exports": "_" }
+    "Phaser": {
+      "exports": "Phaser"
+    },
+    "lodash": {
+      "exports": "_"
+    }
   },
   "devDependencies": {
     "browserify": "^4.1.5",
@@ -28,13 +32,13 @@
     "grunt-cache-bust": "^0.3.6",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-connect": "^0.7.1",
-    "grunt-contrib-imagemin": "^0.7.0",
     "grunt-contrib-jade": "^0.11.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-stylus": "^0.16.0",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-open": "^0.2.3"
+    "grunt-open": "^0.2.3",
+    "grunt-pngmin": "^0.6.1"
   },
   "dependencies": {
     "lodash": "^2.4.1"

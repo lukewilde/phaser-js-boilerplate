@@ -11,7 +11,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-open')
   grunt.loadNpmTasks('grunt-contrib-jade')
-  grunt.loadNpmTasks('grunt-contrib-imagemin')
+  grunt.loadNpmTasks('grunt-pngmin')
   grunt.loadNpmTasks('grunt-contrib-stylus')
 
   var productionBuild = !!(grunt.cli.tasks.length && grunt.cli.tasks[0] === 'build')
@@ -138,17 +138,19 @@ module.exports = function (grunt) {
 
     , clean: ['<%= project.dest %>/*.js']
 
-    , imagemin:
-      { compress:
-        { files:
-          [ { expand: true
-            , cwd: 'public/images/'
-            , dest: 'public/images/'
-            , src: ['**/*.{png,jpg,gif}']
-            }
-          ]
+    , pngmin:
+      { options:
+        { ext: '.png'
+        , force: true
         }
-      }
+      , compile:
+        { files:
+            [ { src: 'public/images/*.png'
+              , dest: 'public/images/'
+              }
+            ]
+          }
+        }
 
     , uglify:
       { options:
@@ -190,5 +192,5 @@ module.exports = function (grunt) {
     ]
   )
 
-  grunt.registerTask('optimise', ['imagemin'])
+  grunt.registerTask('optimise', ['pngmin'])
 }
