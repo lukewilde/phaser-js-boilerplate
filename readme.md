@@ -37,7 +37,7 @@ Creates a production ready build of the application.
 
 Lossy compression of all png's in the `public/images/` directory using pngquant.
 
-(Linux users will need to have a version of (pngquant)[http://pngquant.org/] availble on their paths)
+(Linux users will need to have a version of [pngquant](http://pngquant.org/) availble on their paths)
 
 ## Who
 
