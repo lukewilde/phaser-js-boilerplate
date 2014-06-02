@@ -62,7 +62,6 @@ module.exports = function (grunt) {
         }
       , js:
         { files: '<%= project.dest %>/**/*.js'
-        , tasks: []
         }
       , jade:
         { files: 'templates/*.jade'
