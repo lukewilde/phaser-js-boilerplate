@@ -23,6 +23,7 @@ module.exports = function (grunt) {
       { src: 'public/js/src'
       , js: '<%= project.src %>/game/{,*/}*.js'
       , dest: 'public/js'
+      , bundle: 'public/js/app.min.js'
       , port: 3017
       , phaser: '<%= project.lib %>/phaser.arcade.js'
       , banner:
@@ -76,7 +77,7 @@ module.exports = function (grunt) {
     , browserify:
       { app:
         { src: ['<%= project.src %>/game/app.js']
-        , dest: '<%= project.dest %>/app.js'
+        , dest: '<%= project.bundle %>'
         , options:
           { transform: ['browserify-shim']
           , watch: true
@@ -101,10 +102,9 @@ module.exports = function (grunt) {
         }
       , assets:
         { files:
-          [
-            { src:
+          [ { src:
               [ 'public/index.html'
-              , '<%= project.dest %>/app.js'
+              , '<%= project.bundle %>'
               ]
             }
           ]
@@ -157,8 +157,7 @@ module.exports = function (grunt) {
         }
       , dist:
         { files:
-          { '<%= project.dest %>/app.js': '<%= project.dest %>/app.js'
-          , '<%= project.dest %>/lib.js': '<%= project.dest %>/lib.js'
+          { '<%= project.bundle %>': '<%= project.bundle %>'
           }
         }
       }
