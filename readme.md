@@ -33,6 +33,12 @@ Configures and runs a development build optimised for fast watch performance.
 
 Creates a production ready build of the application.
 
+#### grunt optimise
+
+Lossy compression of all png's in the `public/images/` directory using pngquant.
+
+(Linux users will need to have a version of (pngquant)[http://pngquant.org/] availble on their paths)
+
 ## Who
 
   Built with some ideas from the retired https://github.com/luizbills/phaser-js-boilerplate
