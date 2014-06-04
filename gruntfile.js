@@ -26,7 +26,7 @@ module.exports = function (grunt) {
       , js: '<%= project.src %>/game/{,*/}*.js'
       , dest: 'public/js'
       , bundle: 'public/js/app.min.js'
-      , port: 3017
+      , port: properties.port
       , phaser: '<%= project.lib %>/phaser.arcade.js'
       , banner:
         '/*!\n' +
