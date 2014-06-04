@@ -43,3 +43,4 @@ Icon?
 
 /public/js/*.js
 /public/*.html
+/build/*

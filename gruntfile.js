@@ -13,6 +13,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade')
   grunt.loadNpmTasks('grunt-pngmin')
   grunt.loadNpmTasks('grunt-contrib-stylus')
+  grunt.loadNpmTasks('grunt-mkdir')
+  grunt.loadNpmTasks('grunt-contrib-copy')
 
   var productionBuild = !!(grunt.cli.tasks.length && grunt.cli.tasks[0] === 'build')
 
@@ -39,10 +41,16 @@ module.exports = function (grunt) {
       }
 
     , connect:
-      { server:
+      { dev:
         { options:
           { port: '<%= project.port %>'
           , base: './public'
+          }
+        }
+      , build:
+        { options:
+          { port: '<%= project.port %>'
+          , base: './build'
           }
         }
       }
@@ -135,7 +143,7 @@ module.exports = function (grunt) {
         }
       }
 
-    , clean: ['<%= project.dest %>/*.js']
+    , clean: ['./build/']
 
     , pngmin:
       { options:
@@ -151,6 +159,25 @@ module.exports = function (grunt) {
           }
         }
 
+    , mkdir:
+      { all:
+        { options:
+          { create: ['build/css', 'build/js', 'build/images']
+          }
+        }
+      }
+
+    , copy:
+      { main:
+        { files:
+          [ { expand: true, flatten: true, src: ['public/images/*'], dest: 'build/images/' }
+          , { expand: true, flatten: true, src: ['public/css/game.css'], dest: 'build/css/' }
+          , { expand: true, flatten: true, src: ['public/js/app.min.js'], dest: 'build/js/' }
+          , { expand: true, flatten: true, src: ['public/index.html'], dest: 'build/' }
+          ]
+        }
+      }
+
     , uglify:
       { options:
         { banner: '<%= project.banner %>'
@@ -165,12 +192,11 @@ module.exports = function (grunt) {
   )
 
   grunt.registerTask('default',
-    [ 'clean'
-    , 'browserify'
+    [ 'browserify'
     , 'jade'
     , 'stylus'
     , 'cacheBust'
-    , 'connect'
+    , 'connect:dev'
     , 'open'
     , 'watch'
     ]
@@ -184,7 +210,9 @@ module.exports = function (grunt) {
     , 'stylus'
     , 'uglify'
     , 'cacheBust'
-    , 'connect'
+    , 'mkdir'
+    , 'copy'
+    , 'connect:build'
     , 'open'
     , 'watch'
     ]
