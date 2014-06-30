@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     { pkg: grunt.file.readJSON('package.json')
 
     , project:
-      { src: './src/js'
+      { src: 'src/js'
       , js: '<%= project.src %>/game/{,*/}*.js'
       , dest: 'build/js'
       , bundle: 'build/js/app.min.js'
