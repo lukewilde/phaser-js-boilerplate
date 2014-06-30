@@ -36,7 +36,7 @@ module.exports = function (grunt) {
         ' * @author <%= pkg.author %>\n' +
         ' * @version <%= pkg.version %>\n' +
         ' * Copyright <%= pkg.author %>. <%= pkg.license %> licensed.\n' +
-        ' * Made using Phaser Blank <https://github.com/lukewilde/phaser-blank/>' +
+        ' * Made using Phaser Blank <https://github.com/lukewilde/phaser-blank/>\n' +
         ' */\n'
       }
 
