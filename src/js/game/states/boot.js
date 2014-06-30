@@ -7,7 +7,9 @@ module.exports = function(game) {
 
   function addStats() {
     var stats = new Stats()
-    stats.setMode(0) // 0: fps, 1: ms
+
+    // 0: fps, 1: ms
+    stats.setMode(0)
 
     // Align top-left
     stats.domElement.style.position = 'absolute'
@@ -28,7 +30,7 @@ module.exports = function(game) {
 
   boot.create = function () {
 
-    if(properties.showStats) {
+    if (properties.showStats) {
       addStats()
     }
 
