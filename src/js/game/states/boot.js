@@ -8,10 +8,8 @@ module.exports = function(game) {
   function addStats() {
     var stats = new Stats()
 
-    // 0: fps, 1: ms
     stats.setMode(0)
 
-    // Align top-left
     stats.domElement.style.position = 'absolute'
     stats.domElement.style.left = '0px'
     stats.domElement.style.top = '0px'
