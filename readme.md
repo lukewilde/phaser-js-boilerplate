@@ -84,7 +84,7 @@ Compiles the current build into `build/build.zip` ready for upload to [CocoonJs]
 
 ### Coding Style and Linting.
 
-I follow Ben Gourley's https://github.com/bengourley/js-style-guide
+I follow [Ben Gourley's JS Style Guide](https://github.com/bengourley/js-style-guide).
 
 ## Created with contributions and inspiration from
 
