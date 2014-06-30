@@ -1,20 +1,20 @@
-var properties = require('./public/js/src/game/properties.js')
+var properties = require('./src/js/game/properties.js')
 
 module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-browserify')
-  grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-contrib-connect')
-  grunt.loadNpmTasks('grunt-contrib-jshint')
-  grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-cache-bust')
   grunt.loadNpmTasks('grunt-contrib-clean')
-  grunt.loadNpmTasks('grunt-open')
-  grunt.loadNpmTasks('grunt-contrib-jade')
-  grunt.loadNpmTasks('grunt-pngmin')
-  grunt.loadNpmTasks('grunt-contrib-stylus')
-  grunt.loadNpmTasks('grunt-mkdir')
+  grunt.loadNpmTasks('grunt-contrib-connect')
   grunt.loadNpmTasks('grunt-contrib-copy')
+  grunt.loadNpmTasks('grunt-contrib-jade')
+  grunt.loadNpmTasks('grunt-contrib-jshint')
+  grunt.loadNpmTasks('grunt-contrib-stylus')
+  grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-mkdir')
+  grunt.loadNpmTasks('grunt-open')
+  grunt.loadNpmTasks('grunt-pngmin')
 
   var productionBuild = !!(grunt.cli.tasks.length && grunt.cli.tasks[0] === 'build')
 
@@ -22,12 +22,11 @@ module.exports = function (grunt) {
     { pkg: grunt.file.readJSON('package.json')
 
     , project:
-      { src: 'public/js/src'
+      { src: './src/js'
       , js: '<%= project.src %>/game/{,*/}*.js'
-      , dest: 'public/js'
-      , bundle: 'public/js/app.min.js'
+      , dest: 'build/js'
+      , bundle: 'build/js/app.min.js'
       , port: properties.port
-      , phaser: '<%= project.lib %>/phaser.arcade.js'
       , banner:
         '/*!\n' +
         ' * <%= pkg.title %>\n' +
@@ -42,12 +41,6 @@ module.exports = function (grunt) {
 
     , connect:
       { dev:
-        { options:
-          { port: '<%= project.port %>'
-          , base: './public'
-          }
-        }
-      , build:
         { options:
           { port: '<%= project.port %>'
           , base: './build'
@@ -73,12 +66,16 @@ module.exports = function (grunt) {
         { files: '<%= project.dest %>/**/*.js'
         }
       , jade:
-        { files: 'templates/*.jade'
+        { files: 'src/templates/*.jade'
         , tasks: ['jade']
         }
       , stylus:
-        { files: 'public/css/*.styl'
+        { files: 'src/style/*.styl'
         , tasks: ['stylus']
+        }
+      , images:
+        { files: 'src/images/**/*'
+        , tasks: ['copy:images']
         }
       }
 
@@ -111,7 +108,7 @@ module.exports = function (grunt) {
       , assets:
         { files:
           [ { src:
-              [ 'public/index.html'
+              [ 'build/index.html'
               , '<%= project.bundle %>'
               ]
             }
@@ -128,7 +125,7 @@ module.exports = function (grunt) {
             }
           }
         , files:
-          { 'public/index.html': ['templates/index.jade']
+          { 'build/index.html': ['src/templates/index.jade']
           }
         }
       }
@@ -136,7 +133,7 @@ module.exports = function (grunt) {
     , stylus:
       { compile:
         { files:
-          { 'public/css/game.css': ['public/css/*.styl'] }
+          { 'build/style/game.css': ['src/style/*.styl'] }
         , options:
           { sourcemaps: !productionBuild
           }
@@ -152,8 +149,8 @@ module.exports = function (grunt) {
         }
       , compile:
         { files:
-            [ { src: 'public/images/*.png'
-              , dest: 'public/images/'
+            [ { src: 'src/images/*.png'
+              , dest: 'src/images/'
               }
             ]
           }
@@ -162,18 +159,15 @@ module.exports = function (grunt) {
     , mkdir:
       { all:
         { options:
-          { create: ['build/css', 'build/js', 'build/images']
+          { create: ['build/style', 'build/js', 'build/images']
           }
         }
       }
 
     , copy:
-      { main:
+      { images:
         { files:
-          [ { expand: true, flatten: true, src: ['public/images/*'], dest: 'build/images/' }
-          , { expand: true, flatten: true, src: ['public/css/game.css'], dest: 'build/css/' }
-          , { expand: true, flatten: true, src: ['public/js/app.min.js'], dest: 'build/js/' }
-          , { expand: true, flatten: true, src: ['public/index.html'], dest: 'build/' }
+          [ { expand: true, src: ['src/images/*'], dest: 'build/images/' }
           ]
         }
       }
@@ -196,7 +190,7 @@ module.exports = function (grunt) {
     , 'jade'
     , 'stylus'
     , 'cacheBust'
-    , 'connect:dev'
+    , 'connect'
     , 'open'
     , 'watch'
     ]
@@ -212,7 +206,7 @@ module.exports = function (grunt) {
     , 'cacheBust'
     , 'mkdir'
     , 'copy'
-    , 'connect:build'
+    , 'connect'
     , 'open'
     , 'watch'
     ]

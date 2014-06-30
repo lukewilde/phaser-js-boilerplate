@@ -1,8 +1,8 @@
 {
   "name": "phaser-blank",
-  "version": "0.0.0",
-  "description": "",
-  "main": "public/js/src/game/app.js",
+  "version": "0.1.0",
+  "description": "A blank canvas for Phaser.js development",
+  "main": "build/js/app.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
