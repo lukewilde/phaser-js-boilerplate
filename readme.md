@@ -36,19 +36,25 @@ Next you need to install the projects various NPM dependencies:
 
     npm install
 
-And you should finally be ready to spin up a development build of your new project:
+And you should now be ready to spin up a development build of your new project:
 
     grunt
+
+## Developing
+
+All of the files required to run the game will live in the `src` folder, this will include any JavaScript, images, HTML ([Jade](http://jade-lang.com/)), and CSS ([Stylus](http://learnboost.github.io/stylus/)). When the default grunt task is invoked, these files are ultimately compiled over to the `build` directory which is used as the web root by the webserver.
+
+While the folder structure is consistent between the `src` and `build` directories, I recommend that you always use relative file paths for any assets loaded by your HTML or javascript. This is because when exporting your build
 
 ### Available Targets
 
     grunt
 
-Configures and runs a development build optimised for fast watch performance, running with source maps and live reload.
+Configures and runs an unminified development build optimised for fast watch performance with source maps and live reload.
 
     grunt build
 
-Creates a production ready build of the application.
+Creates a production ready build of the applicatzion.
 
     grunt optimise
 
