@@ -1,6 +1,6 @@
 # A Phaser.js Boilerplate
 
-A template to boost the productivity of Phaser.js game developers. Provides tools to assist various development activities, improve code reuse, and package projects into production ready bundles.
+A template to boost the productivity of Phaser.js game developers. Provides tools to improve code reuse, assist in development activities, and can package projects into production ready bundles.
 
 ## What's in the Box
 
@@ -26,7 +26,7 @@ You will need to first install [Node.js](http://nodejs.org/download/) and the gr
 
 ### Setup Your Project
 
-download and unpack [The Phaser.js Boilerplate](https://github.com/lukewilde/phaser-blank/archive/master.zip). Or alternatively checkout the source:
+Download and unpack [The Phaser.js Boilerplate](https://github.com/lukewilde/phaser-blank/archive/master.zip). Or alternatively checkout from source:
 
     git clone git@github.com:lukewilde/phaser-blank.git my-sweet-game
     cd my-sweet-game
@@ -40,22 +40,28 @@ And you should finally be ready to spin up a development build of your new proje
 
     grunt
 
-### Available targets
+### Available Targets
 
-#### grunt default
+    grunt
 
-Configures and runs a development build optimised for fast watch performance.
+Configures and runs a development build optimised for fast watch performance, running with source maps and live reload.
 
-#### grunt build
+    grunt build
 
 Creates a production ready build of the application.
 
-#### grunt optimise
+    grunt optimise
 
-Lossy compression of all png's in the `public/images/` directory using pngquant.
+Lossy compression of all png's in the `build/images/` directory using pngquant.
 
 (Linux users will need to have a version of [pngquant](http://pngquant.org/) available on their paths).
 
-## Who
+### Keep Phaser.js Up To Date
 
-  Built with some ideas from the retired https://github.com/luizbills/phaser-js-boilerplate
+The project comes with an unminified version of Phaser with Arcade physics, this can be replaced if you require updates or one of the alternate physics engines. When updating you'll have to update the Browserify shims configuration found in the projects `package.json`.
+
+## Created with Contributors and Inspiration from
+
+  * [Luke Wilde](http://lukewilde.co.uk)
+  * The retired https://github.com/luizbills/phaser-js-boilerplate
+  * [Craig Beswetherick](http://grindheadgames.com)
