@@ -5,6 +5,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-browserify')
   grunt.loadNpmTasks('grunt-cache-bust')
   grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-contrib-compress')
   grunt.loadNpmTasks('grunt-contrib-connect')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-jade')
@@ -171,6 +172,15 @@ module.exports = function (grunt) {
         { files:
           { '<%= project.bundle %>': '<%= project.bundle %>'
           }
+        }
+      }
+
+    , compress:
+      { options:
+        { archive: 'build/build.zip'
+        }
+      , main:
+        { files: [ { expand: true, cwd: 'build/', src: ['**/*'], dest: 'build/' } ]
         }
       }
     }

@@ -46,6 +46,7 @@
     "grunt-pngmin": "^0.6.1"
   },
   "dependencies": {
+    "grunt-contrib-compress": "^0.9.1",
     "lodash": "^2.4.1"
   }
 }
