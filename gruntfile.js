@@ -59,8 +59,9 @@ module.exports = function (grunt) {
       }
 
     , watch:
-      { options:
-        { livereload: !productionBuild
+      { livereload:
+        { options: { livereload: !productionBuild }
+        , files: ['build/**']
         }
       , js:
         { files: '<%= project.dest %>/**/*.js'
