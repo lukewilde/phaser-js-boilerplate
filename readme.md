@@ -82,9 +82,9 @@ Compiles the current build into `build/{title}-{YYYY-MM-DD}.zip` with an interna
 
 Compiles the current build into `build/build.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
 
-### Coding Style and Linting.
+### Coding Style and Linting
 
-I follow [Ben Gourley's JS Style Guide](https://github.com/bengourley/js-style-guide).
+I follow [Ben Gourley's JavaScript Style Guide](https://github.com/bengourley/js-style-guide).
 
 ## Created with contributions and inspiration from
 
