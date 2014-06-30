@@ -32,7 +32,7 @@ Download and unpack [The Phaser.js Boilerplate](https://github.com/lukewilde/pha
     cd my-sweet-game
     git remote rename origin blank
 
-Next, inside the project, you need to install the projects various NPM dependencies:
+Next, inside the project, you need to install the project's various NPM dependencies:
 
     npm install
 
@@ -70,9 +70,9 @@ Creates an uglified, production ready build with no source maps.
 
     grunt optimise
 
-Lossy compression of all png's in the `src/images/` directory using pngquant.
+Lossy compression of all png's in the `src/images/` directory using [pngquant](http://pngquant.org/).
 
-(Linux users will need to have a version of [pngquant](http://pngquant.org/) available on their paths).
+(Linux users will need to have a version of pngquant available on their paths).
 
     grunt zip
 
@@ -80,9 +80,13 @@ Compiles the current build into `build/{title}-{YYYY-MM-DD}.zip` with an interna
 
     grunt cocoon
 
-Compiles the current build into `build/build.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/)
+Compiles the current build into `build/build.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
 
-## Created with contributors and inspiration from
+### Coding Style and Linting.
+
+I follow Ben Gourley's https://github.com/bengourley/js-style-guide
+
+## Created with contributions and inspiration from
 
   * [Craig Beswetherick](http://grindheadgames.com)
   * [Jesse Freeman's Phaser template](https://github.com/gamecook/phaser-project-template)
