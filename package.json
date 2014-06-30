@@ -1,8 +1,8 @@
 {
   "name": "phaser-blank",
-  "version": "0.0.0",
-  "description": "",
-  "main": "public/js/src/game/app.js",
+  "version": "0.1.0",
+  "description": "A blank canvas for Phaser.js development",
+  "main": "build/js/app.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +13,7 @@
   "author": "Luke Wilde",
   "license": "MIT",
   "browser": {
-    "Phaser": "./public/js/src/lib/phaser.arcade.js",
+    "Phaser": "./src/js/lib/phaser.arcade.js",
     "lodash": "./node_modules/lodash/dist/lodash.compat.js"
   },
   "browserify-shim": {
@@ -38,7 +38,6 @@
     "grunt-contrib-stylus": "^0.16.0",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-mkdir": "^0.1.1",
     "grunt-open": "^0.2.3",
     "grunt-pngmin": "^0.6.1"
   },
