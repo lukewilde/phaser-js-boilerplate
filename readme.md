@@ -50,7 +50,7 @@ Files in the `build` directory will always be generated and excluded from Git by
 
 * Use relative file paths for any assets loaded by your HTML or JavaScript. This will negate any potential path issues when the game is later uploaded to a webserver.
 * If working with [Texture Atlases](http://en.wikipedia.org/wiki/Texture_atlas) create an `assets` directory and place individual sprites and template files in here. Output your atlases and their associated data to the `src/images` directory.
-* Borwserify is crazy powerful. I'm not going to quote Spiderman, but you should definitely check this out [Substack's Browserify Handbook](https://github.com/substack/browserify-handbook)
+* Borwserify is crazy powerful. I'm not going to quote Spiderman, but you should definitely check out [Substack's Browserify Handbook](https://github.com/substack/browserify-handbook)
 
 ### Updating or Adding Libraries
 
