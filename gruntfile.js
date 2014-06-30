@@ -133,7 +133,7 @@ module.exports = function (grunt) {
     , stylus:
       { compile:
         { files:
-          { 'build/style/game.css': ['src/style/*.styl'] }
+          { 'build/style/index.css': ['src/style/index.styl'] }
         , options:
           { sourcemaps: !productionBuild
           }
