@@ -42,9 +42,18 @@ And you should now be ready to spin up a development build of your new project:
 
 ## Developing
 
-All of the files required to run the game will live in the `src` folder, this will include any JavaScript, images, HTML ([Jade](http://jade-lang.com/)), and CSS ([Stylus](http://learnboost.github.io/stylus/)). When the default grunt task is invoked, these files are ultimately compiled over to the `build` directory which is used as the web root by the webserver.
+All of the files required to run the game will live in the `src` folder, this will include any JavaScript, images, HTML ([Jade](http://jade-lang.com/)), and CSS ([Stylus](http://learnboost.github.io/stylus/)). When the default grunt task is invoked, these files are compiled over to a `build` directory which will be used as the web root.
 
-While the folder structure is consistent between the `src` and `build` directories, I recommend that you always use relative file paths for any assets loaded by your HTML or javascript. This is because when exporting your build
+Files in the `build` directory will always be generated and excluded from Git by the .gitignore, as such these can removed without warning and should generally not be edited.
+
+### Recommendations
+
+* Use relative file paths for any assets loaded by your HTML or JavaScript. This will negate any potential path issues when the game is later uploaded to a webserver.
+* If working with [Texture Atlases](http://en.wikipedia.org/wiki/Texture_atlas) create an `assets` directory and place individual sprites and template files in here. Output your atlases and their associated data to the `src/images` directory.
+
+#### Keep Phaser.js Up To Date
+
+The project comes with an unminified version of Phaser with Arcade physics, this can be replaced if you require updates or one of the alternate physics engines. When updating you'll have to update the Browserify shims configuration found in the projects `package.json`.
 
 ### Available Targets
 
@@ -54,20 +63,24 @@ Configures and runs an unminified development build optimised for fast watch per
 
     grunt build
 
-Creates a production ready build of the applicatzion.
+Creates an uglified, production ready build with no source maps.
 
     grunt optimise
 
-Lossy compression of all png's in the `build/images/` directory using pngquant.
+Lossy compression of all png's in the `src/images/` directory using pngquant.
 
 (Linux users will need to have a version of [pngquant](http://pngquant.org/) available on their paths).
 
-### Keep Phaser.js Up To Date
+    grunt zip
 
-The project comes with an unminified version of Phaser with Arcade physics, this can be replaced if you require updates or one of the alternate physics engines. When updating you'll have to update the Browserify shims configuration found in the projects `package.json`.
+Compiles the current build into `build/{title}-{YYYY-MM-DD}.zip` with an internal folder. This is intended for use when transferring the build to a third party for upload webserver.
 
-## Created with Contributors and Inspiration from
+    grunt cocoon
 
-  * [Luke Wilde](http://lukewilde.co.uk)
-  * The retired https://github.com/luizbills/phaser-js-boilerplate
+Compiles the current build into `build/build.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/)
+
+## Created with contributors and inspiration from
+
   * [Craig Beswetherick](http://grindheadgames.com)
+  * [Jesse Freeman's Phaser template](https://github.com/gamecook/phaser-project-template)
+  * The retired https://github.com/luizbills/phaser-js-boilerplate
