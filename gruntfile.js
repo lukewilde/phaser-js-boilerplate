@@ -12,7 +12,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-stylus')
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-mkdir')
   grunt.loadNpmTasks('grunt-open')
   grunt.loadNpmTasks('grunt-pngmin')
 
@@ -157,14 +156,6 @@ module.exports = function (grunt) {
           }
         }
 
-    , mkdir:
-      { all:
-        { options:
-          { create: ['build/style', 'build/js', 'build/images']
-          }
-        }
-      }
-
     , copy:
       { images:
         { files:
@@ -208,8 +199,6 @@ module.exports = function (grunt) {
     , 'uglify'
     , 'copy:images'
     , 'cacheBust'
-    , 'mkdir'
-    , 'copy'
     , 'connect'
     , 'open'
     , 'watch'
