@@ -1,20 +1,40 @@
-var makeBootState = function(game) {
+var Stats = require('Stats')
+  , properties = require('../properties')
 
-  function preload () {
+module.exports = function(game) {
+
+  var boot = {}
+
+  function addStats() {
+    var stats = new Stats()
+    stats.setMode(0) // 0: fps, 1: ms
+
+    // Align top-left
+    stats.domElement.style.position = 'absolute'
+    stats.domElement.style.left = '0px'
+    stats.domElement.style.top = '0px'
+
+    document.body.appendChild(stats.domElement)
+
+    setInterval(function () {
+      stats.begin()
+      stats.end()
+    }, 1000 / 60)
+  }
+
+  boot.preload = function () {
     game.load.image('logo', 'images/phaser.png#grunt-cache-bust')
   }
 
-  function create() {
+  boot.create = function () {
+
+    if(properties.showStats) {
+      addStats()
+    }
+
     var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo')
     logo.anchor.setTo(0.5, 0.5)
   }
 
-  var boot =
-      { preload: preload
-      , create: create
-      }
-
   return boot
 }
-
-module.exports = makeBootState
