@@ -1,26 +1,43 @@
-# Another Phaser.js Boilerplate
+# A Phaser.js Boilerplate
 
-https://github.com/photonstorm/phaser
+A template to boost the productivity of Phaser.js game developers. Provides tools to assist various development activities, improve code reuse, and package projects into production ready bundles.
 
-## Why
+## What's in the Box
 
-* Browserify
-* Source maps
-* JsHint
+* [NPM](https://www.npmjs.org/) via [Browserify](http://browserify.org/)
+* [Jade](http://jade-lang.com/)
+* [Stylus](http://learnboost.github.io/stylus/)
+* [Lodash](http://lodash.com/)
+* [JsHint](http://www.jshint.com/)
+* [Uglify.js](https://github.com/mishoo/UglifyJS)
+* [Source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/)
+* [Stats.js](https://github.com/mrdoob/stats.js/)
+* [Image optimisation tools](http://pngquant.org/)
+* Livereload (auto refresh)
 * Cache busted assets
-* Image optimisation tools
-* Lodash
-* Uglify.js
-* Jade
-* Stylus
-* Live reload
+* Zip compression
+* [.gitignore](https://github.com/serby/GitIgnore)
 
-## How
+## Installing
 
-    git clone git@github.com:lukewilde/phaser-blank.git
-    cd phaser-blank
+### Node.js and Grunt
+
+You will need to first install [Node.js](http://nodejs.org/download/) and the grunt-cli: `npm install -g grunt-cli`.
+
+### Setup Your Project
+
+download and unpack [The Phaser.js Boilerplate](https://github.com/lukewilde/phaser-blank/archive/master.zip). Or alternatively checkout the source:
+
+    git clone git@github.com:lukewilde/phaser-blank.git my-sweet-game
+    cd my-sweet-game
     git remote rename origin blank
+
+Next you need to install the projects various NPM dependencies:
+
     npm install
+
+And you should finally be ready to spin up a development build of your new project:
+
     grunt
 
 ### Available targets
