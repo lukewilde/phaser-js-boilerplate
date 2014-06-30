@@ -77,6 +77,10 @@ module.exports = function (grunt) {
         { files: 'src/images/**/*'
         , tasks: ['copy:images']
         }
+      , audio:
+        { files: 'src/audio/**/*'
+        , tasks: ['copy:audio']
+        }
       }
 
     , browserify:
@@ -162,6 +166,11 @@ module.exports = function (grunt) {
           [ { expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/images/' }
           ]
         }
+      , audio:
+        { files:
+          [ { expand: true, cwd: 'src/audio/', src: ['**'], dest: 'build/audio/' }
+          ]
+        }
       }
 
     , uglify:
@@ -191,7 +200,7 @@ module.exports = function (grunt) {
     , 'browserify'
     , 'jade'
     , 'stylus'
-    , 'copy:images'
+    , 'copy'
     , 'cacheBust'
     , 'connect'
     , 'open'
@@ -206,7 +215,7 @@ module.exports = function (grunt) {
     , 'jade'
     , 'stylus'
     , 'uglify'
-    , 'copy:images'
+    , 'copy'
     , 'cacheBust'
     , 'connect'
     , 'open'
@@ -214,5 +223,5 @@ module.exports = function (grunt) {
     ]
   )
 
-  grunt.registerTask('optimise', ['pngmin'])
+  grunt.registerTask('optimise', ['pngmin', 'copy:images'])
 }
