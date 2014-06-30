@@ -167,7 +167,7 @@ module.exports = function (grunt) {
     , copy:
       { images:
         { files:
-          [ { expand: true, src: ['src/images/*'], dest: 'build/images/' }
+          [ { expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/images/' }
           ]
         }
       }
@@ -186,9 +186,11 @@ module.exports = function (grunt) {
   )
 
   grunt.registerTask('default',
-    [ 'browserify'
+    [ 'clean'
+    , 'browserify'
     , 'jade'
     , 'stylus'
+    , 'copy:images'
     , 'cacheBust'
     , 'connect'
     , 'open'
@@ -203,6 +205,7 @@ module.exports = function (grunt) {
     , 'jade'
     , 'stylus'
     , 'uglify'
+    , 'copy:images'
     , 'cacheBust'
     , 'mkdir'
     , 'copy'

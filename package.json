@@ -13,7 +13,7 @@
   "author": "Luke Wilde",
   "license": "MIT",
   "browser": {
-    "Phaser": "./public/js/src/lib/phaser.arcade.js",
+    "Phaser": "./src/js/lib/phaser.arcade.js",
     "lodash": "./node_modules/lodash/dist/lodash.compat.js"
   },
   "browserify-shim": {
