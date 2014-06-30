@@ -149,8 +149,8 @@ module.exports = function (grunt) {
         }
       , compile:
         { files:
-            [ { src: 'build/images/*.png'
-              , dest: 'build/images/'
+            [ { src: 'src/images/*.png'
+              , dest: 'src/images/'
               }
             ]
           }
