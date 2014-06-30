@@ -1,5 +1,6 @@
 var Phaser = require('Phaser')
-  , game = new Phaser.Game(800, 600, Phaser.AUTO, '')
+  , properties = require('./properties')
+  , game = new Phaser.Game(properties.size.x, properties.size.y, Phaser.AUTO, '')
   , boot = require('./states/boot.js')
 
 game.state.add('boot', boot(game))
