@@ -76,11 +76,11 @@ Lossy compression of all png's in the `src/images/` directory using [pngquant](h
 
 #### grunt zip
 
-Compiles the current build into `build/{title}.zip` with an internal folder. This is intended for use when transferring the build to a third party for upload webserver.
+Compiles the current build into `{title}.zip` with an internal folder. This is intended for use when transferring the build to a third party for upload webserver.
 
 #### grunt cocoon
 
-Compiles the current build into `build/{title}.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
+Compiles the current build into `{title}.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
 
 ### Coding Style and Linting
 
