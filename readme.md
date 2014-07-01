@@ -60,25 +60,25 @@ When adding new libraries that aren't CommonJS compatible, you'll have to update
 
 ### Available Targets
 
-    grunt
+#### grunt
 
 Configures and runs an unminified development build optimised for fast watch performance with source maps and live reload.
 
-    grunt build
+#### grunt build
 
 Creates an uglified, production ready build with no source maps.
 
-    grunt optimise
+#### grunt optimise
 
 Lossy compression of all png's in the `src/images/` directory using [pngquant](http://pngquant.org/).
 
 (Linux users will need to have a version of pngquant available on their paths).
 
-    grunt zip
+#### grunt zip
 
 Compiles the current build into `build/{title}.zip` with an internal folder. This is intended for use when transferring the build to a third party for upload webserver.
 
-    grunt cocoon
+#### grunt cocoon
 
 Compiles the current build into `build/{title}.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
 
