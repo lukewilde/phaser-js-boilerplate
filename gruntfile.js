@@ -186,10 +186,13 @@ module.exports = function (grunt) {
 
     , compress:
       { options:
-        { archive: 'build/build.zip'
+        { archive: '<%= pkg.name %>.zip'
         }
-      , main:
-        { files: [ { expand: true, cwd: 'build/', src: ['**/*'], dest: 'build/' } ]
+      , zip:
+        { files: [ { expand: true, cwd: 'build/', src: ['**/*'], dest: '<%= pkg.name %>/' } ]
+        }
+      , cocoon:
+        { files: [ { expand: true, cwd: 'build/', src: ['**/*'] } ]
         }
       }
     }
@@ -224,4 +227,6 @@ module.exports = function (grunt) {
   )
 
   grunt.registerTask('optimise', ['pngmin', 'copy:images'])
+  grunt.registerTask('cocoon', ['compress:cocoon'])
+  grunt.registerTask('zip', ['compress:zip'])
 }

@@ -14,7 +14,7 @@ A template to boost the productivity of Phaser.js game developers. Provides tool
 * [Stats.js](https://github.com/mrdoob/stats.js/)
 * [Image optimisation tools](http://pngquant.org/)
 * Livereload (auto refresh)
-* Cache busted assets
+* Cache busted assets (WIP)
 * Zip compression
 * [.gitignore](https://github.com/serby/GitIgnore)
 
@@ -26,11 +26,11 @@ You will need to first install [Node.js](http://nodejs.org/download/) and the gr
 
 ### Setup Your Project
 
-Download and unpack [The Phaser.js Boilerplate](https://github.com/lukewilde/phaser-blank/archive/master.zip). Or alternatively checkout from source:
+Download and unpack [The Phaser.js Boilerplate](https://github.com/lukewilde/phaser-js-boilerplate/archive/master.zip). Or alternatively checkout from source:
 
-    git clone git@github.com:lukewilde/phaser-blank.git my-sweet-game
+    git clone git@github.com:lukewilde/phaser-js-boilerplate.git my-sweet-game
     cd my-sweet-game
-    git remote rename origin blank
+    git remote rename origin boilerplate
 
 Next, inside the project, you need to install the project's various NPM dependencies:
 
@@ -76,11 +76,11 @@ Lossy compression of all png's in the `src/images/` directory using [pngquant](h
 
     grunt zip
 
-Compiles the current build into `build/{title}-{YYYY-MM-DD}.zip` with an internal folder. This is intended for use when transferring the build to a third party for upload webserver.
+Compiles the current build into `build/{title}.zip` with an internal folder. This is intended for use when transferring the build to a third party for upload webserver.
 
     grunt cocoon
 
-Compiles the current build into `build/build.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
+Compiles the current build into `build/{title}.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
 
 ### Coding Style and Linting
 
