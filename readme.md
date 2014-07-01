@@ -50,7 +50,7 @@ Configures and runs an unminified development build optimised for fast watch per
 
 Creates an uglified, production ready build with no source maps.
 
-#### `grunt optimise
+#### `grunt optimise`
 
 Lossy compression of all png's in the `src/images/` directory using [pngquant](http://pngquant.org/).
 
