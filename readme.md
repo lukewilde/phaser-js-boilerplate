@@ -12,6 +12,7 @@ A template to boost the productivity of Phaser.js game developers. Provides tool
 * [Uglify.js](https://github.com/mishoo/UglifyJS)
 * [Source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/)
 * [Stats.js](https://github.com/mrdoob/stats.js/)
+* [Google Analytics](http://www.google.com/analytics/)
 * [Image optimisation tools](http://pngquant.org/)
 * Livereload (auto refresh)
 * Cache busted assets (WIP)
@@ -76,7 +77,7 @@ Lossy compression of all png's in the `src/images/` directory using [pngquant](h
 
 #### grunt zip
 
-Compiles the current build into `{title}.zip` with an internal folder. This is intended for use when transferring the build to a third party for upload webserver.
+Compiles the current build into `{title}.zip` with an internal folder. This is intended for use when transferring the build to a third party for webserver upload.
 
 #### grunt cocoon
 
