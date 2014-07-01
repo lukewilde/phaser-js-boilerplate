@@ -42,25 +42,25 @@ Files in the `build` directory will always be generated and excluded from Git by
 
 ### Available Targets
 
-#### grunt
+#### `grunt`
 
 Configures and runs an unminified development build optimised for fast watch performance with source maps and live reload.
 
-#### grunt build
+#### `grunt build`
 
 Creates an uglified, production ready build with no source maps.
 
-#### grunt optimise
+#### `grunt optimise
 
 Lossy compression of all png's in the `src/images/` directory using [pngquant](http://pngquant.org/).
 
 (Linux users will need to have a version of pngquant available on their paths).
 
-#### grunt zip
+#### `grunt zip`
 
 Compiles the current build into `{title}.zip` with an internal folder. This is intended for use when transferring the build to a third party for webserver upload.
 
-#### grunt cocoon
+#### `grunt cocoon`
 
 Compiles the current build into `{title}.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
 
