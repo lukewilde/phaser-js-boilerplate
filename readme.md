@@ -40,12 +40,6 @@ Files in the `build` directory will always be generated and excluded from Git by
 * If working with [Texture Atlases](http://en.wikipedia.org/wiki/Texture_atlas) create an `assets` directory and place individual sprites and template files in here. Output your atlases and their associated data to the `src/images` directory.
 * Borwserify is crazy powerful. I'm not going to quote Spiderman, but you should definitely check out [Substack's Browserify Handbook](https://github.com/substack/browserify-handbook).
 
-### Updating or Adding Libraries
-
-The project comes with an unminified version of Phaser with arcade physics, this can be replaced if you require updates or one of the alternate physics engines.
-
-When adding new libraries that aren't CommonJS compatible, you'll have to update the [Browserify Shim configuration](https://github.com/thlorenz/browserify-shim#you-will-always).
-
 ### Available Targets
 
 #### grunt
@@ -69,6 +63,12 @@ Compiles the current build into `{title}.zip` with an internal folder. This is i
 #### grunt cocoon
 
 Compiles the current build into `{title}.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
+
+### Updating or Adding Libraries
+
+The project comes with an unminified version of Phaser with arcade physics, this can be replaced if you require updates or one of the alternate physics engines.
+
+When adding new libraries that aren't CommonJS compatible, you'll have to update the [Browserify Shim configuration](https://github.com/thlorenz/browserify-shim#you-will-always).
 
 ### Coding Style and Linting
 
