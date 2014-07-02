@@ -50,7 +50,7 @@ Configures and runs an unminified development build optimised for fast watch per
 
 #### `grunt build`
 
-Creates an uglified, production ready build with no source maps.
+Creates an uglified, production ready build with no source maps. By default, Linting errors will cause the build to fail.
 
 #### `grunt optimise`
 
@@ -74,7 +74,7 @@ When adding new libraries that aren't CommonJS compatible, you'll have to update
 
 ### Coding Style and Linting
 
-I follow [Ben Gourley's JavaScript Style Guide](https://github.com/bengourley/js-style-guide).
+I follow [Ben Gourley's JavaScript Style Guide](https://github.com/bengourley/js-style-guide) but I've kept the code footprint low so you can easily include your own `.jshintrc`.
 
 ## Created with contributions and inspiration from
 
