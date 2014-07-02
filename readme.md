@@ -30,7 +30,7 @@ And you should now be ready to spin up a development build of your new project:
 
 ## Developing
 
-Your first port of call will likely be to customise the properties found in `/package.json` and `/src/js/game/properties.js`.
+Your first port of call will likely be to customise the properties found in `package.json` and `src/js/game/properties.js`.
 
 All of the files required to run the game will live in the `src` folder, this will include any JavaScript, images, HTML ([Jade](http://jade-lang.com/)), and CSS ([Stylus](http://learnboost.github.io/stylus/)). When the default grunt task is invoked, these files are compiled to a `build` directory.
 
