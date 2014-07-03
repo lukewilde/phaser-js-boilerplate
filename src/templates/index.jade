@@ -20,4 +20,4 @@ body
 
   if (!productionBuild)
     script.
-      document.write('<script src="//' + window.location.hostname + ':35729/livereload.js"><\/script>')
+      document.write('<script src="//' + window.location.hostname + ':#{properties.liveReloadPort}/livereload.js"><\/script>')

@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 
     , watch:
       { options:
-        { livereload: !productionBuild
+        { livereload: productionBuild ? false : properties.liveReloadPort
         }
       , js:
         { files: '<%= project.dest %>/**/*.js'
