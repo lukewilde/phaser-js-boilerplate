@@ -32,6 +32,10 @@ module.exports = function(game) {
       addStats()
     }
 
+    game.scale.pageAlignHorizontally = true
+    game.scale.pageAlignVertically = true
+    game.scale.refresh()
+
     var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo')
     logo.anchor.setTo(0.5, 0.5)
   }
