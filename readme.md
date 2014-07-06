@@ -57,7 +57,7 @@ Creates an uglified, production ready build with no source maps.
 
 Lossy compression of all png's in the `src/images/` directory using [pngquant](http://pngquant.org/).
 
-(Linux users will need to have a version of pngquant available on their paths).
+(Linux users will need to have a version of pngquant available on their paths.)
 
 #### `grunt zip`
 
