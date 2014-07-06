@@ -41,6 +41,7 @@ Files in the `build` directory will always be generated and excluded from Git by
 * Use relative file paths for any assets loaded by your HTML or JavaScript. This will negate any potential path issues when the game is later uploaded to a webserver.
 * If working with [Texture Atlases](http://en.wikipedia.org/wiki/Texture_atlas) create an `assets` directory and place individual sprites and template files in here. Output your atlases and their associated data to the `src/images` directory.
 * Borwserify is crazy powerful. I'm not going to quote Spiderman, but you should definitely check out [Substack's Browserify Handbook](https://github.com/substack/browserify-handbook).
+* Linting is disabled by default, if you'd like to enforce it for production builds update the `.jshintrc` with rules for your coding style and remove the comment block from jshint directive in the gruntfile's build task.
 
 ### Available Targets
 
@@ -50,7 +51,7 @@ Configures and runs an unminified development build optimised for fast watch per
 
 #### `grunt build`
 
-Creates an uglified, production ready build with no source maps. By default, Linting errors will cause the build to fail.
+Creates an uglified, production ready build with no source maps.
 
 #### `grunt optimise`
 
@@ -70,11 +71,11 @@ Compiles the current build into `{title}.zip` ready for upload to [CocoonJs](htt
 
 The project comes with an unminified version of Phaser with arcade physics, this can be replaced if you require updates or one of the alternate physics engines.
 
-When adding new libraries that aren't CommonJS compatible, you'll have to update the [Browserify Shim configuration](https://github.com/thlorenz/browserify-shim#you-will-always).
+When adding new libraries that aren't CommonJS compatible, you'll have to update the [Browserify Shim configuration](https://github.com/thlorenz/browserify-shim#3-provide-browserify-shim-config).
 
 ### Coding Style and Linting
 
-I follow [Ben Gourley's JavaScript Style Guide](https://github.com/bengourley/js-style-guide) but I've kept the code footprint low so you can easily include your own `.jshintrc`.
+I follow [Ben Gourley's JavaScript Style Guide](https://github.com/bengourley/js-style-guide), (with the exception of using semicolons). I've kept the code footprint low so you can easily include your own `.jshintrc`.
 
 ## Created with contributions and inspiration from
 
