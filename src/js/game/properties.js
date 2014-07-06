@@ -9,4 +9,4 @@ module.exports =
     , y: 600
     }
   , analyticsId: 'UA-50892214-2'
-  }
+  };

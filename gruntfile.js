@@ -1,22 +1,22 @@
-var properties = require('./src/js/game/properties.js')
+var properties = require('./src/js/game/properties.js');
 
 module.exports = function (grunt) {
 
-  grunt.loadNpmTasks('grunt-browserify')
-  grunt.loadNpmTasks('grunt-cache-bust')
-  grunt.loadNpmTasks('grunt-contrib-clean')
-  grunt.loadNpmTasks('grunt-contrib-compress')
-  grunt.loadNpmTasks('grunt-contrib-connect')
-  grunt.loadNpmTasks('grunt-contrib-copy')
-  grunt.loadNpmTasks('grunt-contrib-jade')
-  grunt.loadNpmTasks('grunt-contrib-jshint')
-  grunt.loadNpmTasks('grunt-contrib-stylus')
-  grunt.loadNpmTasks('grunt-contrib-uglify')
-  grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-open')
-  grunt.loadNpmTasks('grunt-pngmin')
+  grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-cache-bust');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-open');
+  grunt.loadNpmTasks('grunt-pngmin');
 
-  var productionBuild = !!(grunt.cli.tasks.length && grunt.cli.tasks[0] === 'build')
+  var productionBuild = !!(grunt.cli.tasks.length && grunt.cli.tasks[0] === 'build');
 
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
@@ -197,7 +197,7 @@ module.exports = function (grunt) {
         }
       }
     }
-  )
+  );
 
   grunt.registerTask('default',
     [ 'clean'
@@ -210,7 +210,7 @@ module.exports = function (grunt) {
     , 'open'
     , 'watch'
     ]
-  )
+  );
 
   grunt.registerTask('build',
     [ 'jshint'
@@ -225,9 +225,9 @@ module.exports = function (grunt) {
     , 'open'
     , 'watch'
     ]
-  )
+  );
 
-  grunt.registerTask('optimise', ['pngmin', 'copy:images'])
-  grunt.registerTask('cocoon', ['compress:cocoon'])
-  grunt.registerTask('zip', ['compress:zip'])
-}
+  grunt.registerTask('optimise', ['pngmin', 'copy:images']);
+  grunt.registerTask('cocoon', ['compress:cocoon']);
+  grunt.registerTask('zip', ['compress:zip']);
+};
