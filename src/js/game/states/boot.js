@@ -22,10 +22,6 @@ module.exports = function(game) {
     }, 1000 / 60);
   }
 
-  boot.preload = function () {
-    game.load.image('logo', 'images/phaser.png#grunt-cache-bust');
-  };
-
   boot.create = function () {
 
     if (properties.showStats) {
@@ -36,8 +32,7 @@ module.exports = function(game) {
     game.scale.pageAlignVertically = true;
     game.scale.refresh();
 
-    var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-    logo.anchor.setTo(0.5, 0.5);
+    game.state.start('preloader');
   };
 
   return boot;
