@@ -75,7 +75,7 @@ When adding new libraries that aren't CommonJS compatible, you'll have to update
 
 ### Coding Style and Linting
 
-I follow [Ben Gourley's JavaScript Style Guide](https://github.com/bengourley/js-style-guide), (with the exception of using semicolons). I've kept the code footprint low so you can easily include your own `.jshintrc`.
+I follow [Ben Gourley's JavaScript Style Guide](https://github.com/bengourley/js-style-guide) (with the exception of using semicolons). I've kept the code footprint low so you can easily include your own `.jshintrc`.
 
 ## Created with contributions and inspiration from
 
