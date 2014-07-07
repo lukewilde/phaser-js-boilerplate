@@ -1,6 +1,8 @@
+var npmProperties = require('../../../package.json');
+
 module.exports =
   { title: 'Blank Phaser Project'
-  , description: 'A grunty Phaser.js SDK'
+  , description: npmProperties.description
   , port: 3017
   , liveReloadPort: 3018
   , showStats: true
