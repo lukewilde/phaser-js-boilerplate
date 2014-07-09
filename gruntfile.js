@@ -209,7 +209,6 @@ module.exports = function (grunt) {
     , 'jade'
     , 'stylus'
     , 'copy'
-    , 'cacheBust'
     , 'connect'
     , 'open'
     , 'watch'
