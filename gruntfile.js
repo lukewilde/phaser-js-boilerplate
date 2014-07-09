@@ -21,6 +21,8 @@ module.exports = function (grunt) {
   grunt.initConfig(
     { pkg: grunt.file.readJSON('package.json')
 
+    , properties: properties
+
     , project:
       { src: 'src/js'
       , js: '<%= project.src %>/game/{,*/}*.js'
@@ -28,14 +30,16 @@ module.exports = function (grunt) {
       , bundle: 'build/js/app.min.js'
       , port: properties.port
       , banner:
-        '/*!\n' +
-        ' * <%= pkg.title %>\n' +
+        '/*\n' +
+        ' * <%= properties.title %>\n' +
         ' * <%= pkg.description %>\n' +
-        ' * <%= pkg.url %>\n' +
+        ' *\n' +
         ' * @author <%= pkg.author %>\n' +
         ' * @version <%= pkg.version %>\n' +
-        ' * Copyright <%= pkg.author %>. <%= pkg.license %> licensed.\n' +
-        ' * Made using Phaser Blank <https://github.com/lukewilde/phaser-js-boilerplate>\n' +
+        ' * @copyright <%= pkg.author %>\n' +
+        ' * @license <%= pkg.license %> licensed\n' +
+        ' *\n' +
+        ' * Made using Phaser JS Boilerplate <https://github.com/lukewilde/phaser-js-boilerplate>\n' +
         ' */\n'
       }
 
