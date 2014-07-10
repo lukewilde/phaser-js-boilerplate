@@ -39,7 +39,7 @@ Files in the `build` directory will always be generated and excluded from Git by
 ### Recommendations
 
 * Use relative file paths for any assets loaded by your HTML or JavaScript. This will negate any potential path issues when the game is later uploaded to a webserver.
-* If working with [Texture Atlases](http://en.wikipedia.org/wiki/Texture_atlas) create an `assets` directory and place individual sprites and template files in here. Output your atlases and their associated data to the `src/images` directory.
+* If you intend to store development assets (i.e PSD's, Texture Packer files, etc) inside your project, store them outside of the `src` directory to avoid bloating your builds with them.
 * Borwserify is crazy powerful. I'm not going to quote Spiderman, but you should definitely check out [Substack's Browserify Handbook](https://github.com/substack/browserify-handbook).
 * Linting is disabled by default, if you'd like to enforce it for production builds update the `.jshintrc` with rules for your coding style and remove the comment block from jshint directive in the gruntfile's build task.
 
