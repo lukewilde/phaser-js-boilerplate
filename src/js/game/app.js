@@ -1,4 +1,5 @@
 var Phaser = require('Phaser')
+  , _ = require('lodash')
   , properties = require('./properties')
   , states =
     { boot: require('./states/boot.js')
@@ -7,8 +8,9 @@ var Phaser = require('Phaser')
     }
   , game = new Phaser.Game(properties.size.x, properties.size.y, Phaser.AUTO, 'game');
 
-game.state.add('boot', states.boot(game));
-game.state.add('preloader', states.preloader(game));
-game.state.add('game', states.game(game));
+// Automatically register each state.
+_.each(states, function(state, key) {
+  game.state.add(key, state(game));
+});
 
 game.state.start('boot');
