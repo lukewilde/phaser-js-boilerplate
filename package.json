@@ -28,7 +28,9 @@
       "exports": "Stats"
     }
   },
-  "devDependencies": {
+  "dependencies": {
+    "grunt-contrib-compress": "^0.9.1",
+    "lodash": "^2.4.1",
     "browserify": "^4.1.5",
     "browserify-shim": "^3.5.0",
     "grunt": "^0.4.5",
@@ -44,9 +46,5 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-open": "^0.2.3",
     "grunt-pngmin": "^0.6.1"
-  },
-  "dependencies": {
-    "grunt-contrib-compress": "^0.9.1",
-    "lodash": "^2.4.1"
   }
 }
