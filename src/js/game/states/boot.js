@@ -11,10 +11,6 @@ module.exports = function(game) {
       addStats();
     }
 
-    game.scale.pageAlignHorizontally = true;
-    game.scale.pageAlignVertically = true;
-    game.scale.refresh();
-
     game.sound.mute = properties.mute;
 
     game.state.start('preloader');
@@ -26,7 +22,7 @@ module.exports = function(game) {
     stats.setMode(0);
 
     stats.domElement.style.position = 'absolute';
-    stats.domElement.style.left = '0px';
+    stats.domElement.style.right = '0px';
     stats.domElement.style.top = '0px';
 
     document.body.appendChild(stats.domElement);
