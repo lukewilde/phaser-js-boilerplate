@@ -90,8 +90,8 @@ module.exports = function (grunt) {
 
     , browserify:
       { app:
-        { src: ['<%= project.src %>/game/app.js']
-        , dest: '<%= project.bundle %>'
+        { src: ['src/js/game/app.js']
+        , dest: 'build/js/app.min.js'
         , options:
           { transform: ['browserify-shim']
           , watch: true
