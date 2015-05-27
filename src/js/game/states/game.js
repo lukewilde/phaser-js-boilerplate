@@ -1,11 +1,8 @@
-module.exports = function(game) {
+var game = {};
 
-  var gameState = {};
-
-  gameState.create = function () {
-    var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-    logo.anchor.setTo(0.5, 0.5);
-  };
-
-  return gameState;
+game.create = function () {
+  var logo = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo');
+  logo.anchor.setTo(0.5, 0.5);
 };
+
+module.exports = game;

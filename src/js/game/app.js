@@ -10,7 +10,7 @@ var Phaser = require('Phaser')
 
 // Automatically register each state.
 _.each(states, function(state, key) {
-  game.state.add(key, state(game));
+  game.state.add(key, state);
 });
 
 game.state.start('boot');
