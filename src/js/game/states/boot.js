@@ -5,7 +5,7 @@ var Stats = require('Stats')
 boot.create = function () {
 
   if (properties.showStats) {
-    addStats();
+    addStats(this.game);
   }
 
   this.game.sound.mute = properties.mute;
@@ -13,7 +13,7 @@ boot.create = function () {
   this.game.state.start('preloader');
 };
 
-function addStats() {
+function addStats(game) {
   var stats = new Stats();
 
   stats.setMode(0);
@@ -24,10 +24,13 @@ function addStats() {
 
   document.body.appendChild(stats.domElement);
 
-  setInterval(function () {
+  // In order to correctly monitor FPS, we have to make calls to the stats package before and after phaser's update.
+  var oldUpdate = game.update;
+  game.update = function() {
     stats.begin();
+    oldUpdate.apply(game, arguments);
     stats.end();
-  }, 1000 / 60);
+  };
 }
 
 module.exports = boot;
