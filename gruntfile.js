@@ -176,6 +176,11 @@ module.exports = function (grunt) {
           [ { expand: true, cwd: 'src/audio/', src: ['**'], dest: 'build/audio/' }
           ]
         }
+      , phaser:
+        { files:
+          [ { src: ['node_modules/phaser/build/phaser.js'], dest: 'build/js/phaser.arcade.js' }
+          ]
+        }
       }
 
     , uglify:

@@ -23,5 +23,8 @@
   "trailing": false,
   "undef": true,
   "-W008": true,
-  "unused": true
+  "unused": true,
+  "predef": [
+    "Phaser"
+  ]
 }
