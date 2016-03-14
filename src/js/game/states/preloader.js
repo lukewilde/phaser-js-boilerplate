@@ -1,7 +1,7 @@
 var preloader = {};
 
 preloader.preload = function () {
-  this.game.load.image('logo', 'images/phaser.png#grunt-cache-bust');
+  this.game.load.image('logo', 'images/phaser.png');
 };
 
 preloader.create = function () {

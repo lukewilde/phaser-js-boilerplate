@@ -110,18 +110,13 @@ module.exports = function (grunt) {
 
     , cacheBust:
       { options:
-        { encoding: 'utf8'
-        , algorithm: 'md5'
-        , length: 8
+        { assets: ['audio/**', 'images/**', 'js/**', 'style/**']
+        , baseDir: './build/'
+        , deleteOriginals: true
+        , length: 5
         }
-      , assets:
-        { files:
-          [ { src:
-              [ 'build/index.html'
-              , '<%= project.bundle %>'
-              ]
-            }
-          ]
+      , files: {
+          src: ['./build/js/app.min.*', './build/index.html']
         }
       }
 
@@ -247,7 +242,7 @@ module.exports = function (grunt) {
     , 'copy:images'
     , 'copy:audio'
     , 'copy:phaserArcadeMin'
-    // , 'cacheBust'
+    , 'cacheBust'
     , 'connect'
     , 'open'
     , 'watch'
