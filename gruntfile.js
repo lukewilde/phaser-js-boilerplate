@@ -178,7 +178,12 @@ module.exports = function (grunt) {
         }
       , phaser:
         { files:
-          [ { src: ['node_modules/phaser/build/phaser.js'], dest: 'build/js/phaser.arcade.js' }
+          [ { src: ['node_modules/phaser/build/phaser.js'], dest: 'build/js/phaser.js' }
+          ]
+        }
+      , uglifiedPhaser:
+        { files:
+          [ { src: ['node_modules/phaser/build/phaser.min.js'], dest: 'build/js/phaser.js' }
           ]
         }
       }
@@ -213,7 +218,9 @@ module.exports = function (grunt) {
     , 'browserify'
     , 'jade'
     , 'stylus'
-    , 'copy'
+    , 'copy:images'
+    , 'copy:audio'
+    , 'copy:phaser'
     , 'connect'
     , 'open'
     , 'watch'
@@ -227,8 +234,10 @@ module.exports = function (grunt) {
     , 'jade'
     , 'stylus'
     , 'uglify'
-    , 'copy'
-    , 'cacheBust'
+    , 'copy:images'
+    , 'copy:audio'
+    , 'copy:uglifiedPhaser'
+    // , 'cacheBust'
     , 'connect'
     , 'open'
     , 'watch'
