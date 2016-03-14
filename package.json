@@ -16,9 +16,6 @@
     "Stats": "./src/js/lib/stats.min.js"
   },
   "browserify-shim": {
-    "lodash": {
-      "exports": "_"
-    },
     "Stats": {
       "exports": "Stats"
     }
