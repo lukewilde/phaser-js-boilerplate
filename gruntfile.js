@@ -176,12 +176,22 @@ module.exports = function (grunt) {
           [ { expand: true, cwd: 'src/audio/', src: ['**'], dest: 'build/audio/' }
           ]
         }
-      , phaser:
+      , phaserArcade:
+        { files:
+          [ { src: ['node_modules/phaser/build/custom/phaser-arcade-physics.js'], dest: 'build/js/phaser.js' }
+          ]
+        }
+      , phaserArcadeMin:
+        { files:
+          [ { src: ['node_modules/phaser/build/custom/phaser-arcade-physics.min.js'], dest: 'build/js/phaser.js' }
+          ]
+        }
+      , phaserP2:
         { files:
           [ { src: ['node_modules/phaser/build/phaser.js'], dest: 'build/js/phaser.js' }
           ]
         }
-      , uglifiedPhaser:
+      , phaserP2Min:
         { files:
           [ { src: ['node_modules/phaser/build/phaser.min.js'], dest: 'build/js/phaser.js' }
           ]
@@ -220,7 +230,7 @@ module.exports = function (grunt) {
     , 'stylus'
     , 'copy:images'
     , 'copy:audio'
-    , 'copy:phaser'
+    , 'copy:phaserArcade'
     , 'connect'
     , 'open'
     , 'watch'
@@ -236,7 +246,7 @@ module.exports = function (grunt) {
     , 'uglify'
     , 'copy:images'
     , 'copy:audio'
-    , 'copy:uglifiedPhaser'
+    , 'copy:phaserArcadeMin'
     // , 'cacheBust'
     , 'connect'
     , 'open'
