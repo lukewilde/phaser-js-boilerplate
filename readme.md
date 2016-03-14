@@ -4,7 +4,7 @@ A template to boost the productivity of Phaser.js game developers. Provides tool
 
 ## What's in the Box
 
-[NPM](https://www.npmjs.org/) via [Browserify](http://browserify.org/), [Jade](http://jade-lang.com/), [Stylus](http://learnboost.github.io/stylus/), [Lodash](http://lodash.com/), [JsHint](http://www.jshint.com/), [Uglify.js](https://github.com/mishoo/UglifyJS), [Source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/), [Stats.js](https://github.com/mrdoob/stats.js/), [Google Analytics](http://www.google.com/analytics/), [Image optimisation tools](http://pngquant.org/), Livereload (auto refresh), Cache busted assets (WIP), Zip compression, [.gitignore](https://github.com/serby/GitIgnore)
+[NPM](https://www.npmjs.org/) via [Browserify](http://browserify.org/), [Jade](http://jade-lang.com/), [Stylus](http://learnboost.github.io/stylus/), [Lodash](http://lodash.com/), [JsHint](http://www.jshint.com/), [Uglify.js](https://github.com/mishoo/UglifyJS), [Source maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/), [Stats.js](https://github.com/mrdoob/stats.js/), [Google Analytics](http://www.google.com/analytics/), [Image optimisation tools](http://pngquant.org/), Livereload (auto refresh), Cache busted assets, Zip compression, [.gitignore](https://github.com/serby/GitIgnore)
 
 ## Installing
 
