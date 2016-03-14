@@ -13,13 +13,9 @@
   "author": "Luke Wilde",
   "license": "MIT",
   "browser": {
-    "Phaser": "./src/js/lib/phaser.arcade.js",
     "Stats": "./src/js/lib/stats.min.js"
   },
   "browserify-shim": {
-    "Phaser": {
-      "exports": "Phaser"
-    },
     "lodash": {
       "exports": "_"
     },
