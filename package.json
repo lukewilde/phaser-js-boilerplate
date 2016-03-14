@@ -1,6 +1,6 @@
 {
   "name": "phaser-js-boilerplate",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A Grunty Phaser.js SDK",
   "main": "build/js/app.min.js",
   "scripts": {
