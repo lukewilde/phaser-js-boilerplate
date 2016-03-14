@@ -67,9 +67,17 @@ Compiles the current build into `{title}.zip` with an internal folder. This is i
 
 Compiles the current build into `{title}.zip` ready for upload to [CocoonJs](https://www.ludei.com/cocoonjs/).
 
-### Updating or Adding Libraries
+### Phaser and it's Physics Engines
 
-The project comes with an unminified version of Phaser with arcade physics, this can be replaced if you require updates or one of the alternate physics engines.
+You might notice that Phaser isn't actually bundled in with the rest of our Browserify bundle. Bundling it was our first choice initially, however leaving it out enables use of the P2 Physics engine and makes `grunt:browserify` run a whole lot faster. It also gives you the option to pull Phaser from in a [CDN](https://github.com/photonstorm/phaser#cdn).
+
+#### Using P2
+
+The project comes ready to run Phaser with arcade physics, but can easily be adjusted to use the P2 physics engine.
+
+The [`grunt:copy` task](https://github.com/lukewilde/phaser-js-boilerplate/blob/feature/remove-phaser-from-bundle/gruntfile.js#L179-L198) contains directives which can be used in [`grunt:default`](https://github.com/lukewilde/phaser-js-boilerplate/blob/feature/remove-phaser-from-bundle/gruntfile.js#L233) and [`grunt:build`](https://github.com/lukewilde/phaser-js-boilerplate/blob/feature/remove-phaser-from-bundle/gruntfile.js#L249) to copy in your physics engine of choice.
+
+### Updating or Adding Libraries
 
 When adding new libraries that aren't CommonJS compatible, you'll have to update the [Browserify Shim configuration](https://github.com/thlorenz/browserify-shim#3-provide-browserify-shim-config).
 
