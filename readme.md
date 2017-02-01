@@ -18,7 +18,8 @@ Download and unpack [The Phaser.js Boilerplate](https://github.com/lukewilde/pha
 
     git clone git@github.com:lukewilde/phaser-js-boilerplate.git my-sweet-game
     cd my-sweet-game
-    git remote rename origin boilerplate
+    rm -rf .git/
+    git init && git add -A && git commit -m "Importing Phaser boilerplate."
 
 Next, inside the project, you need to install the project's various NPM dependencies:
 
