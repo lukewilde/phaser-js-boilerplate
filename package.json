@@ -12,13 +12,8 @@
   },
   "author": "Luke Wilde",
   "license": "MIT",
-  "browser": {
-    "Stats": "./src/js/lib/stats.min.js"
-  },
   "browserify-shim": {
-    "Stats": {
-      "exports": "Stats"
-    }
+    "./src/js/lib/stats.min.js": "Stats"
   },
   "dependencies": {
     "browserify": "^13.3.0",

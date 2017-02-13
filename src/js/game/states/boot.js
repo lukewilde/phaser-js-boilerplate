@@ -1,4 +1,4 @@
-var Stats = require('Stats')
+var Stats = require('../../lib/stats.min')
   , properties = require('../properties')
   , boot = {};
 
