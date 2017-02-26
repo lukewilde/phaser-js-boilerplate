@@ -1,6 +1,6 @@
-var Stats = require('../../lib/stats.min')
-  , properties = require('../properties')
-  , boot = {};
+var Stats = require('../../lib/stats.min');
+var properties = require('../properties');
+var boot = {};
 
 boot.create = function () {
 
@@ -14,6 +14,7 @@ boot.create = function () {
 };
 
 function addStats(game) {
+
   var stats = new Stats();
 
   stats.setMode(0);
