@@ -25,7 +25,7 @@ function addStats(game) {
 
   document.body.appendChild(stats.domElement);
 
-  // In order to correctly monitor FPS, we have to make calls to the stats package before and after phaser's update.
+  // Monkey patch Phaser's update in order to correctly monitor FPS.
   var oldUpdate = game.update;
   game.update = function() {
     stats.begin();
