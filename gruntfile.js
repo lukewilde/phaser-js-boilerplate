@@ -206,32 +206,32 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', [
-   'clean',
-   'browserify',
-   'jade',
-   'stylus',
-   'copy:images',
-   'copy:audio',
-   'copy:phaserArcade',
-   'connect',
-   'open',
-   'watch'
+    'clean',
+    'browserify',
+    'jade',
+    'stylus',
+    'copy:images',
+    'copy:audio',
+    'copy:phaserArcade',
+    'connect',
+    'open',
+    'watch'
   ]);
 
   grunt.registerTask('build', [
-   /*'jshint',
-   */'clean',
-   'browserify',
-   'jade',
-   'stylus',
-   'uglify',
-   'copy:images',
-   'copy:audio',
-   'copy:phaserArcadeMin',
-   'cacheBust',
-   'connect',
-   'open',
-   'watch'
+    /*'jshint',
+    */'clean',
+    'browserify',
+    'jade',
+    'stylus',
+    'uglify',
+    'copy:images',
+    'copy:audio',
+    'copy:phaserArcadeMin',
+    'cacheBust',
+    'connect',
+    'open',
+    'watch'
   ]);
 
   grunt.registerTask('optimise', ['pngmin', 'copy:images']);
