@@ -41,7 +41,7 @@ module.exports = function (grunt) {
         ' * @license <%= pkg.license %> licensed\n' +
         ' *\n' +
         ' * Made using Phaser JS Boilerplate' +
-        ' * <https://github.com/lukewilde/phaser-js-boilerplate>\n' +
+        ' <https://github.com/lukewilde/phaser-js-boilerplate>\n' +
         ' */\n'
     },
 
